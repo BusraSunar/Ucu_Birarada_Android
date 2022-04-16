@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/beige"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/purple_500"
+        android:fillViewport="true"
+        tools:context=".StaticAnket.first_questionnaire_questions">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/beige">
+            <RelativeLayout
+                android:id="@+id/FirstQuestionnaireFirstContainerID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="7dp"
+                android:padding="10dp"
+                android:background="@drawable/border_layout">
+                <TextView
+
+                    android:id="@+id/FirstQuestionnaireFirstQuestionID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="5dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:text="I start conversations" />
+
+                <RadioGroup
+                    android:id="@+id/FirstQuestionnaireFirstItemRadioGroupID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/FirstQuestionnaireFirstQuestionID"
+
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Completely Agree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Agree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Nor Agree Nor Disagree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Disagree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Completely Disagree" />
+                </RadioGroup>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/FirstQuestionnaireSecondContainerID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/FirstQuestionnaireFirstContainerID"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="7dp"
+                android:padding="10dp"
+                android:background="@drawable/border_layout">
+                <TextView
+                    android:id="@+id/SecondQuestionnaireSecondQuestionID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="5dp"
+                    android:text="I am not interested in other people's problems." />
+
+                <RadioGroup
+                    android:id="@+id/FirstQuestionnaireSecondItemRadioGroupID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/SecondQuestionnaireSecondQuestionID"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Completely Agree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Agree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Nor Agree Nor Disagree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Disagree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Completely Disagree" />
+                </RadioGroup>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/FirstQuestionnaireThirdContainerID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/FirstQuestionnaireSecondContainerID"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="7dp"
+                android:padding="10dp"
+                android:background="@drawable/border_layout">
+                <TextView
+                    android:id="@+id/FirstQuestionnaireThirdQuestionID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="5dp"
+                    android:text="I get chores done right away." />
+                <RadioGroup
+                    android:id="@+id/FirstQuestionnaireThirdItemRadioGroupID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/FirstQuestionnaireThirdQuestionID"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Completely Agree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Agree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Nor Agree Nor Disagree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Disagree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Completely Disagree" />
+                </RadioGroup>
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/FirstQuestionnaireFourthContainerID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/FirstQuestionnaireThirdContainerID"
+                android:layout_marginHorizontal="15dp"
+                android:textSize="20sp"
+                android:padding="10dp"
+                android:layout_marginVertical="7dp"
+                android:background="@drawable/border_layout">
+
+                <TextView
+                    android:id="@+id/FirstQuestionnaireFourthQuestionID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="5dp"
+                    android:text="I am easily disturbed" />
+                <RadioGroup
+                    android:id="@+id/FirstQuestionnaireFourthItemRadioGroupID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/FirstQuestionnaireFourthQuestionID"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Completely Agree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Agree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Nor Agree Nor Disagree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Disagree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Completely Disagree" />
+                </RadioGroup>
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/FirstQuestionnaireFifthContainerID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/FirstQuestionnaireFourthContainerID"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="7dp"
+                android:padding="10dp"
+                android:background="@drawable/border_layout">
+                <TextView
+                    android:id="@+id/FirstQuestionnaireFifthQuestionID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="5dp"
+                    android:text="I have excellent ideas." />
+                <RadioGroup
+                    android:id="@+id/FirstQuestionnaireFifthItemRadioGroupID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/FirstQuestionnaireFifthQuestionID"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Completely Agree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Agree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Nor Agree Nor Disagree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Disagree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Completely Disagree" />
+                </RadioGroup>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/FirstQuestionnaireSixthContainerID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/FirstQuestionnaireFifthContainerID"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="7dp"
+                android:padding="10dp"
+                android:background="@drawable/border_layout">
+                <TextView
+                    android:id="@+id/FirstQuestionnaireSixthQuestionID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:textSize="20sp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/white"
+                    android:text="I have little to say." />
+                <RadioGroup
+                    android:id="@+id/FirstQuestionnaireSixthItemRadioGroupID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/FirstQuestionnaireSixthQuestionID"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Completely Agree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Agree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Nor Agree Nor Disagree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Disagree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Completely Disagree" />
+                </RadioGroup>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/FirstQuestionnaireSeventhContainerID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/FirstQuestionnaireSixthContainerID"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="7dp"
+                android:padding="10dp"
+                android:background="@drawable/border_layout">
+                <TextView
+                    android:id="@+id/FirstQuestionnaireSeventhQuestionID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="5dp"
+                    android:text="I have a soft heart." />
+                <RadioGroup
+                    android:id="@+id/FirstQuestionnaireSeventhItemRadioGroupID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/FirstQuestionnaireSeventhQuestionID"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Completely Agree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Agree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Nor Agree Nor Disagree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Disagree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Completely Disagree" />
+                </RadioGroup>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/FirstQuestionnaireEighthContainerID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/FirstQuestionnaireSeventhContainerID"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="7dp"
+                android:padding="10dp"
+                android:background="@drawable/border_layout">
+                <TextView
+                    android:id="@+id/FirstQuestionnaireEighthQuestionID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="5dp"
+                    android:text="I often forget to put things back in their proper place." />
+                <RadioGroup
+                    android:id="@+id/FirstQuestionnaireEighthItemRadioGroupID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/FirstQuestionnaireEighthQuestionID"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Completely Agree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Agree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Nor Agree Nor Disagree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Disagree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Completely Disagree" />
+                </RadioGroup>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/FirstQuestionnaireNinethContainerID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/FirstQuestionnaireEighthContainerID"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="7dp"
+                android:padding="10dp"
+                android:background="@drawable/border_layout">
+                <TextView
+                    android:id="@+id/FirstQuestionnaireNinethQuestionID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="5dp"
+                    android:text="I get upset easily." />
+                <RadioGroup
+                    android:id="@+id/FirstQuestionnaireNinethItemRadioGroupID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/FirstQuestionnaireNinethQuestionID"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Completely Agree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Agree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Nor Agree Nor Disagree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Disagree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Completely Disagree" />
+                </RadioGroup>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/FirstQuestionnaireTenthContainerID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/FirstQuestionnaireNinethContainerID"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="7dp"
+                android:padding="10dp"
+                android:background="@drawable/border_layout">
+                <TextView
+                    android:id="@+id/FirstQuestionnaireTenthQuestionID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:textSize="20sp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/white"
+                    android:text="I do not have a good imagination." />
+                <RadioGroup
+                    android:id="@+id/FirstQuestionnaireTenthItemRadioGroupID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/FirstQuestionnaireTenthQuestionID"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Completely Agree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Agree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Nor Agree Nor Disagree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Disagree" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/white"
+                        android:text="Completely Disagree" />
+                </RadioGroup>
+            </RelativeLayout>
+            <Button
+                android:id="@+id/FirstQuestionnaireNextButtonID"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/FirstQuestionnaireTenthContainerID"
+                android:text="NEXT"/>
+        </RelativeLayout>
+
+    </ScrollView>
+</RelativeLayout>
+
+

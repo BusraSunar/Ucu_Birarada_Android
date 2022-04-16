@@ -2,13 +2,76 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.Ucu_Birarada_Android">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Ucu_Birarada_Android">
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StaticAnket.fourth_questionnaire_questions"
+            android:exported="false" />
+        <activity
+            android:name=".StaticAnket.fifth_questionnaire_questions"
+            android:exported="false" />
+        <activity
+            android:name=".StaticAnket.third_questionnaire_questions"
+            android:exported="false" />
+        <activity
+            android:name=".StaticAnket.second_questionnaire_questions"
+            android:exported="false" />
+        <activity
+            android:name=".StaticAnket.first_questionnaire_questions"
+            android:exported="false" />
+        <activity
+            android:name=".toDoAndAchivements.ToDoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".toDoAndAchivements.AchivementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MeditationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SleepActivity.SleepCounterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SleepActivity.SleepActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatActivities.RedirectActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatActivities.ChatMatchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatActivities.ChatMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatActivities.ChatActivity"
+            android:exported="false" />
         <activity
             android:name=".denemeActivity"
             android:exported="true" />
