@@ -28,11 +28,11 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.1301715438950555" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.13723511604439959" />
         <entry key="app/src/main/res/layout/activity_meditation.xml" value="0.13723511604439959" />
-        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.13723511604439959" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_redirect.xml" value="0.1301715438950555" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.13723511604439959" />
         <entry key="app/src/main/res/layout/activity_second_questionnaire_questions.xml" value="0.13723511604439959" />
-        <entry key="app/src/main/res/layout/activity_sleep.xml" value="0.1807437484848992" />
+        <entry key="app/src/main/res/layout/activity_sleep.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_sleep_counter.xml" value="0.13723511604439959" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.13723511604439959" />
         <entry key="app/src/main/res/layout/activity_third_questionnaire_questions.xml" value="0.13723511604439959" />
