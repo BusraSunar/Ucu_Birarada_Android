@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "300358256511",
+    "project_id": "winx-son",
+    "storage_bucket": "winx-son.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:300358256511:android:a42a218b647ee6a897bc4a",
+        "android_client_info": {
+          "package_name": "com.example.Ucu_Birarada_Android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "300358256511-rqm3782mvu6oprapdr4dd2if4mhf42ie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfo3KDzyJ1LgY8P5czFMpXviriAlubEyk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "300358256511-rqm3782mvu6oprapdr4dd2if4mhf42ie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
