@@ -122,7 +122,7 @@ public class BeachActivity extends Activity {
     public void goBackToMeditation(View view) {
         onPause();
         onDestroy();
-        Intent intent = new Intent(BeachActivity.this, denemeActivity.class);
+        Intent intent = new Intent(BeachActivity.this, MeditationActivity.class);
         startActivity(intent);
         finish();
     }

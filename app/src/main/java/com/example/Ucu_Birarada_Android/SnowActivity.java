@@ -38,7 +38,7 @@ public class SnowActivity extends Activity {
                 VrVideoView.Options options = new VrVideoView.Options();
                 options.inputType = VrVideoView.Options.TYPE_MONO;
                 try {
-                    videoWidgetView.loadVideoFromAsset("snow.mp4", options);
+                    videoWidgetView.loadVideoFromAsset("snow2.mp4", options);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -65,7 +65,7 @@ public class SnowActivity extends Activity {
 
             VrVideoView.Options options = new VrVideoView.Options();
             options.inputType = VrVideoView.Options.TYPE_MONO;
-            videoWidgetView.loadVideoFromAsset("snow.mp4", options);
+            videoWidgetView.loadVideoFromAsset("snow2.mp4", options);
 
         } catch (IOException e) {
 
@@ -108,14 +108,25 @@ public class SnowActivity extends Activity {
     @Override
     protected void onDestroy() {
         // Destroy the widget and free memory.
-        videoWidgetView.shutdown();
+        videoWidgetView.pauseVideo();
+
         super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Prevent the view from rendering continuously when in the background.
+        videoWidgetView.pauseRendering();
+        // If the video is playing when onPause() is called, the default behavior will be to pause
+        // the video and keep it paused when onResume() is called.
+
     }
 
     public void goBackToMeditation(View view) {
         onPause();
         onDestroy();
-        Intent intent = new Intent(SnowActivity.this, denemeActivity.class);
+        Intent intent = new Intent(SnowActivity.this, MeditationActivity.class);
         startActivity(intent);
         finish();
     }
