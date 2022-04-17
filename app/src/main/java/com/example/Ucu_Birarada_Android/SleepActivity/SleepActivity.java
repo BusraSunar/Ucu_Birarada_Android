@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -27,8 +28,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.db.williamchart.data.DataPoint;
-import com.db.williamchart.view.LineChartView;
 import com.example.Ucu_Birarada_Android.ChatActivities.ChatActivity;
 import com.example.Ucu_Birarada_Android.HomeActivity;
 import com.example.Ucu_Birarada_Android.MeditationActivities.MeditationActivity;
@@ -42,9 +41,17 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import lecho.lib.hellocharts.gesture.ZoomType;
+import lecho.lib.hellocharts.model.Axis;
+import lecho.lib.hellocharts.model.AxisValue;
+import lecho.lib.hellocharts.model.Line;
+import lecho.lib.hellocharts.model.LineChartData;
+import lecho.lib.hellocharts.model.PointValue;
+import lecho.lib.hellocharts.model.ValueShape;
+import lecho.lib.hellocharts.view.LineChartView;
 
 public class SleepActivity extends AppCompatActivity {
 
@@ -56,6 +63,8 @@ public class SleepActivity extends AppCompatActivity {
     private List <Date> sleepTimeList;
     private List <Double> sleepQualityList;
     private String sleepQualityData, totalSleepHoursData, timeListStr, qualityListStr, todaysDate;
+    private LineChartView lineChart;
+    public static Context context;
 
     private ArrayList<String> qualityList;
     private ArrayList<String> timeList;
@@ -77,6 +86,7 @@ public class SleepActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sleep);
         this.checkInternet();
+        context = getApplicationContext();
 
         this.init();
 
@@ -169,6 +179,66 @@ public class SleepActivity extends AppCompatActivity {
     }
 
     private void drawLineChart(){
+        /*ChartData.setAxisXBottom(Axis axisX);
+        ColumnChartData.setStacked(boolean isStacked);
+        Line.setStrokeWidth(int strokeWidthDp);*/
+
+        List<PointValue> values = new ArrayList();
+
+
+        values.add(new PointValue(1, 3));
+        values.add(new PointValue(2, 3));
+        values.add(new PointValue(2, 3));
+        values.add(new PointValue(4, 1));
+
+        //In most cased you can call data model methods in builder-pattern-like manner.
+        Line line = new Line(values);
+
+        line.setCubic(true);
+        line.setFilled(false);
+        line.setHasLabels(false);
+        line.setHasLabelsOnlyForSelected(false);
+        line.setHasLines(true);
+        line.setHasPoints(false);
+
+
+
+        line.setColor(Color.GRAY);
+        line.setStrokeWidth(1);
+        line.setAreaTransparency(4);
+        line.setFilled(true);
+        List<Line> lines = new ArrayList<Line>();
+        lines.add(line);
+
+
+        AxisValue a1 = new AxisValue(1);
+        AxisValue a2 = new AxisValue(2);
+        AxisValue a3 = new AxisValue(3);
+        AxisValue a4 = new AxisValue(4);
+        AxisValue a5 = new AxisValue(5);
+
+        List<AxisValue> xax = new ArrayList<>();
+        xax.add(a1);
+        xax.add(a2);
+        xax.add(a3);
+        xax.add(a4);
+        xax.add(a5);
+
+        Axis axisX = new Axis().setValues(xax);
+        Axis axisY = new Axis().setValues(xax);
+
+        LineChartData data = new LineChartData();
+        data.setLines(lines);
+
+        data.setAxisXBottom(axisX);
+        data.setAxisYLeft(axisY);
+
+        lineChart = findViewById(R.id.lineChart);
+        lineChart.setLineChartData(data);
+        data.setBaseValue(Float.NEGATIVE_INFINITY);
+        lineChart.setZoomEnabled(false);
+
+
 
     }
 
