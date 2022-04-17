@@ -43,5 +43,10 @@ dependencies {
     implementation 'com.google.vr:sdk-videowidget:1.101.0'
     implementation 'com.google.code.gson:gson:2.8.9'
     implementation 'com.mikhaellopez:circularimageview:4.3.0'
+    // Charts
+    implementation 'com.diogobernardino:williamchart:3.10.1'
 
+    // Tooltips
+    implementation 'com.diogobernardino.williamchart:tooltip-slider:3.10.1'
+    implementation 'com.diogobernardino.williamchart:tooltip-points:3.10.1'
 }

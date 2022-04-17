@@ -73,9 +73,6 @@
             android:name=".ChatActivities.ChatActivity"
             android:exported="false" />
         <activity
-            android:name=".denemeActivity"
-            android:exported="true" />
-        <activity
             android:name=".ForestActivity"
             android:exported="true" />
         <activity

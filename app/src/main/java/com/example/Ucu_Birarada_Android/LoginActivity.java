@@ -48,6 +48,7 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
@@ -232,15 +233,10 @@ public class LoginActivity extends AppCompatActivity {
 
     public static boolean isValid(String email)
     {
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
-                "[a-zA-Z0-9_+&-]+)@" +
-                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
-                "A-Z]{2,7}$";
-
-        Pattern pat = Pattern.compile(emailRegex);
-        if (email == null)
-            return false;
-        return pat.matcher(email).matches();
+        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 
     public void loginBtnAction(View view)
@@ -255,10 +251,10 @@ public class LoginActivity extends AppCompatActivity {
         if (email.length()==0){
             email_edit.setError("Enter an email");
         }
-        else if (!isValid(email)){
+         if (!isValid(email)){
             email_edit.setError("Enter a valid email");
         }
-        else if (password.length()<6){
+         if (password.length()<6){
             password_edit.setError("Enter a valid password");
         }
 
