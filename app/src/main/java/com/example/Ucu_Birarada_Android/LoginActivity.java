@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
             {
                 rememberMe.setChecked(true);
                 dialog = new ProgressDialog(LoginActivity.this , R.style.AppCompatAlertDialogStyle);
-                dialog.setMessage("Yükleniyor");
+                dialog.setMessage("Loading...");
                 dialog.setCancelable(false);
                 dialog.setInverseBackgroundForced(false);
                 dialog.show();
@@ -115,6 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                                                                 tokenType = jsonObject.getString("tokenType");
                                                                 token = jsonObject.getString("token");
                                                                 didUserCompleteForm = Boolean.parseBoolean(jsonObject.getString("formCompleted"));
+                                                                if(dialog.isShowing())
                                                                 dialog.dismiss();
 
                                                                 if (didUserCompleteForm){
@@ -244,6 +245,11 @@ public class LoginActivity extends AppCompatActivity {
 
     public void loginBtnAction(View view)
     {
+        dialog = new ProgressDialog(LoginActivity.this , R.style.AppCompatAlertDialogStyle);dialog = new ProgressDialog(LoginActivity.this , R.style.AppCompatAlertDialogStyle);
+        dialog.setMessage("Loading...");
+        dialog.setCancelable(false);
+        dialog.setInverseBackgroundForced(false);
+        dialog.show();
         // db gelince burasi degiscek // SİL BENİ
         flag = true;
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -261,7 +267,8 @@ public class LoginActivity extends AppCompatActivity {
             password_edit.setError("Enter a valid password");
         }
 
-        dialog = new ProgressDialog(LoginActivity.this , R.style.AppCompatAlertDialogStyle);
+
+
 
         if(rememberMe.isChecked())
         {
@@ -300,6 +307,9 @@ public class LoginActivity extends AppCompatActivity {
                             tokenType = jsonObject.getString("tokenType");
                             token = jsonObject.getString("token");
                             didUserCompleteForm = Boolean.parseBoolean(jsonObject.getString("formCompleted"));
+
+                            if(dialog.isShowing())
+                                dialog.dismiss();
 
                             if (didUserCompleteForm){
                                 Intent intent = new Intent(LoginActivity.this , HomeActivity.class);
