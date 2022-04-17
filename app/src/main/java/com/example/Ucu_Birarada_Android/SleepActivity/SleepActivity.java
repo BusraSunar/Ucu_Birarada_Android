@@ -39,7 +39,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -53,8 +56,12 @@ public class SleepActivity extends AppCompatActivity {
     private List <Date> sleepTimeList;
     private List <Double> sleepQualityList;
     private LineChartView lineChart;
-    private Double sleepQualityData;
-    private int totalSleepHoursData;
+    private String sleepQualityData, totalSleepHoursData, timeListStr, qualityListStr, date;
+
+    private ArrayList<String> qualityList;
+    private ArrayList<String> timeList;
+
+
 
 
 
@@ -155,14 +162,16 @@ public class SleepActivity extends AppCompatActivity {
         worstSleepAt = (TextView) findViewById(R.id.worstSleepAt);
 
         lineChart = findViewById(R.id.lineChart);
+
+        qualityList = new ArrayList<>();
+        timeList = new ArrayList<>();
+
         drawLineChart();
 
     }
 
     private void drawLineChart(){
-        List<DataPoint> data = new ArrayList<>();
 
-        //lineChart.drawLine();
     }
 
     //Get Data
@@ -295,15 +304,28 @@ public class SleepActivity extends AppCompatActivity {
                             for (int i = 0; i < jsonArray.length(); i++)
                             {
                                 JSONObject jo = jsonArray.getJSONObject(i);
-                                sleptData = (String) jo.get("sleepStartTime");
-                                wokeUpData = (String) jo.get("sleepEndTime");
-                                bestSleepAtData = (String) jo.get("bestSleepAt");
-                                worstSleepAtData = (String) jo.get("worstSleepAt");
-                                sleepQualityData = (Double) jo.get("averageSleepQuality");
-                                totalSleepHoursData = (int) jo.get("totalSleepHours");
-                                //sleepTimeList = (List<Date>) jo.get("sleepTimeList");
-                                //sleepQualityList = (List<Double>) jo.get("sleepQualityList");
+                                sleptData = jo.getString("sleepStartTime");
+                                wokeUpData = jo.getString("sleepEndTime");
+                                bestSleepAtData = jo.getString("bestSleepAt");
+                                worstSleepAtData = jo.getString("worstSleepAt");
+                                sleepQualityData = jo.getString("averageSleepQuality");
+                                totalSleepHoursData = jo.getString("totalSleepHours");
+                                date = jo.getString("date");
 
+                                timeListStr = jo.getString("sleepTimeList");
+                                qualityListStr = jo.getString("sleepQualityList");
+
+                                JSONArray time = new JSONArray(timeListStr);
+                                JSONArray quality = new JSONArray(qualityListStr);
+
+                                for (int j = 0; j < time.length(); j++){
+                                    timeList.add(time.getString(j));
+                                    System.out.println("Time List -- " + j + "  ---> " + timeList.get(j));
+                                }
+                                for (int j = 0; j < quality.length(); j++){
+                                    qualityList.add(quality.getString(j));
+                                    System.out.println("Quality List -- " + j + "  ---> " + qualityList.get(j));
+                                }
 
 
                                 slept.setText(sleptData.substring(11,16).replace(":" , " : "));
@@ -312,7 +334,7 @@ public class SleepActivity extends AppCompatActivity {
                                 worstSleepAt.setText(worstSleepAtData.substring(11,16).replace(":" , " : "));
                                 double temp = Double.parseDouble(sleepQualityData);
                                 sleepQuality.setText(new DecimalFormat("##.#").format(temp));
-                                totalSleep.setText(""+totalSleepHoursData);
+                                totalSleep.setText(totalSleepHoursData);
 
                                 System.out.println("SLEEP GET  ------->    " + jo.toString());
 

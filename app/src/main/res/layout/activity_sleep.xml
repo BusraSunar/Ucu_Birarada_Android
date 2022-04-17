@@ -401,14 +401,17 @@
                     android:layout_height="200dp"
                     android:layout_below="@id/days"
                     android:layout_margin="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:clickable="false"
                     app:chart_gridEffect="dashed"
                     app:chart_labelsColor="@color/green"
                     app:chart_labelsSize="10sp"
-                    android:clickable="false"
                     app:chart_lineColor="@color/green"
                     app:chart_lineThickness="1dp"
-                    app:chart_smoothLine="true"
-                    />
+                    app:chart_smoothLine="true" />
 
 
                 <View
