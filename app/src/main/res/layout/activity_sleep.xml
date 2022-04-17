@@ -410,7 +410,6 @@
                     app:chart_smoothLine="true"
                     />
 
-
                 <View
                     android:id="@+id/line"
                     android:layout_width="match_parent"
