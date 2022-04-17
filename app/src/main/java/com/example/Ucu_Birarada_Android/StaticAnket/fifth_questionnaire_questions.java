@@ -2,8 +2,11 @@ package com.example.Ucu_Birarada_Android.StaticAnket;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +24,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.Ucu_Birarada_Android.HomeActivity;
+import com.example.Ucu_Birarada_Android.MeditationActivities.MeditationActivity;
 import com.example.Ucu_Birarada_Android.R;
 
 import org.json.JSONException;
@@ -53,6 +57,7 @@ public class fifth_questionnaire_questions extends AppCompatActivity {
         Bundle extra = getIntent().getBundleExtra("answers");
         answerForm = (ArrayList<HashMap<String,String>>) extra.getSerializable("object");
         setContentView(R.layout.activity_fifth_questionnaire_questions);
+        this.checkInternet();
         this.init();
         context = getApplicationContext();
         Intent intent = getIntent();
@@ -343,6 +348,32 @@ public class fifth_questionnaire_questions extends AppCompatActivity {
     //misc
 
 
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private void checkInternet()
+    {
+        if (!isNetworkConnected())
+        {
+            androidx.appcompat.app.AlertDialog alertDialog = new androidx.appcompat.app.AlertDialog.Builder(fifth_questionnaire_questions.this).create();
+            alertDialog.setTitle("Bağlantı Problemi");
+            //alertDialog.setIcon(getResources().getDrawable(R.drawable.nonnet));
+            alertDialog.setMessage("Cihazınız internete bağlı değil.");
+            alertDialog.setButton(androidx.appcompat.app.AlertDialog.BUTTON_NEUTRAL, "Tamam",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            System.exit(0);
+                        }
+                    });
+            alertDialog.show();
+        }
+    }
+
+    private boolean isNetworkConnected()
+    {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
+    }
 
 
 

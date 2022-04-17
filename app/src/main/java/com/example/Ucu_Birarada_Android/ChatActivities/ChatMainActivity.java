@@ -82,7 +82,7 @@ public class ChatMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat_main);
         init();
 
-
+        this.checkInternet();
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
