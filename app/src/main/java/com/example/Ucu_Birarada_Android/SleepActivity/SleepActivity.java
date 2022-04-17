@@ -54,6 +54,7 @@ import lecho.lib.hellocharts.model.Line;
 import lecho.lib.hellocharts.model.LineChartData;
 import lecho.lib.hellocharts.model.PointValue;
 import lecho.lib.hellocharts.model.ValueShape;
+import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.view.LineChartView;
 
 public class SleepActivity extends AppCompatActivity {
@@ -100,6 +101,8 @@ public class SleepActivity extends AppCompatActivity {
 
         System.out.println("Önemli Token::::" + token + "  " + tokenType);
         this.getData();
+
+
 
     }
 
@@ -176,7 +179,6 @@ public class SleepActivity extends AppCompatActivity {
         bestSleepAt = (TextView) findViewById(R.id.bestSleepAt);
         worstSleepAt = (TextView) findViewById(R.id.worstSleepAt);
 
-
         qualityList = new ArrayList<>();
         timeList = new ArrayList<>();
 
@@ -188,8 +190,6 @@ public class SleepActivity extends AppCompatActivity {
         friday = findViewById(R.id.FridayProgressID);
         saturday = findViewById(R.id.SaturdayProgressID);
 
-        drawLineChart();
-
     }
 
     private void drawLineChart(){
@@ -199,47 +199,31 @@ public class SleepActivity extends AppCompatActivity {
 
         List<PointValue> values = new ArrayList();
 
-
-        values.add(new PointValue(1, 3));
-        values.add(new PointValue(2, 3));
-        values.add(new PointValue(2, 3));
-        values.add(new PointValue(4, 1));
+        for(int i = 0 ; i < qualityList.size() ; i++){
+            values.add(new PointValue(i, Float.parseFloat(qualityList.get(i))));
+        }
 
         //In most cased you can call data model methods in builder-pattern-like manner.
         Line line = new Line(values);
 
         line.setCubic(true);
-        line.setFilled(false);
+        line.setFilled(true);
         line.setHasLabels(false);
         line.setHasLabelsOnlyForSelected(false);
         line.setHasLines(true);
-        line.setHasPoints(false);
+        line.setHasPoints(true);
+        line.setPointRadius(3);
 
+        line.setColor(Color.LTGRAY);
+        line.setStrokeWidth(2);
 
-
-        line.setColor(Color.GRAY);
-        line.setStrokeWidth(1);
-        line.setAreaTransparency(4);
+        //line.setAreaTransparency(3);
         line.setFilled(true);
         List<Line> lines = new ArrayList<Line>();
         lines.add(line);
 
-
-        AxisValue a1 = new AxisValue(1);
-        AxisValue a2 = new AxisValue(2);
-        AxisValue a3 = new AxisValue(3);
-        AxisValue a4 = new AxisValue(4);
-        AxisValue a5 = new AxisValue(5);
-
-        List<AxisValue> xax = new ArrayList<>();
-        xax.add(a1);
-        xax.add(a2);
-        xax.add(a3);
-        xax.add(a4);
-        xax.add(a5);
-
-        Axis axisX = new Axis().setValues(xax);
-        Axis axisY = new Axis().setValues(xax);
+        Axis axisX = new Axis();
+        Axis axisY = new Axis();
 
         LineChartData data = new LineChartData();
         data.setLines(lines);
@@ -249,8 +233,17 @@ public class SleepActivity extends AppCompatActivity {
 
         lineChart = findViewById(R.id.lineChart);
         lineChart.setLineChartData(data);
-        data.setBaseValue(Float.NEGATIVE_INFINITY);
+        lineChart.setScrollBarSize(20);
+        //data.setBaseValue(Float.NEGATIVE_INFINITY);
         lineChart.setZoomEnabled(false);
+
+        final Viewport v = new Viewport(lineChart.getMaximumViewport());
+        v.bottom = 0;
+        v.top = 11;
+        // You have to set max and current viewports separately.
+        lineChart.setMaximumViewport(v);
+        // I changing current viewport with animation in this case.
+        lineChart.setCurrentViewportWithAnimation(v);
 
 
 
@@ -396,11 +389,11 @@ public class SleepActivity extends AppCompatActivity {
 
                                 for (int j = 0; j < time.length(); j++){
                                     timeList.add(time.getString(j));
-                                    //System.out.println("Time List -- " + j + "  ---> " + timeList.get(j));
+                                    System.out.println("Time List -- " + j + "  ---> " + timeList.get(j));
                                 }
                                 for (int j = 0; j < quality.length(); j++){
                                     qualityList.add(quality.getString(j));
-                                    //System.out.println("Quality List -- " + j + "  ---> " + qualityList.get(j));
+                                    System.out.println("Quality List -- " + j + "  ---> " + qualityList.get(j));
                                 }
 
 
@@ -413,7 +406,7 @@ public class SleepActivity extends AppCompatActivity {
                                 totalSleep.setText(totalSleepHoursData);
 
                                 monday.setProgress((int) (temp * 100));
-
+                                drawLineChart();
 
 
 

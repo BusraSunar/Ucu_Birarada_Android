@@ -48,7 +48,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private TextView firstNameText, lastnameText, emailText, birthdateText, genderText;
-    private TextView firstNameTextSettings, lastnameTextSettings, emailTextSettings, oldPassword ,newPassword;
+    private TextView firstNameTextSettings, lastnameTextSettings, emailTextSettings, userNameID;
     private RadioButton femaleButton ,maleButton, otherButton;
     private RelativeLayout profileScreen;
     private ScrollView settingsScreen;
@@ -99,8 +99,7 @@ public class ProfileActivity extends AppCompatActivity {
         emailTextSettings = findViewById(R.id.EmailEditText);
         femaleButton = findViewById(R.id.GenderPickerFemale);
         maleButton = findViewById(R.id.GenderPickerMale);
-        oldPassword = findViewById(R.id.OldPasswordEditText);
-        newPassword = findViewById(R.id.NewPasswordEditText);
+        userNameID = findViewById(R.id.UserNameID);
 
 
         profileScreen = findViewById(R.id.profileLayout);
@@ -234,6 +233,7 @@ public class ProfileActivity extends AppCompatActivity {
                             emailText.setText(email);
                             birthdateText.setText(birthdate);
                             genderText.setText(gender);
+                            userNameID.setText(name + " " + surname);
                             //Alttaki yorumlu kod json arrayi okur
                             // JSONArray jsonArray = jsonObject.getJSONArray("data");
                             // for (int i = 0; i < jsonArray.length(); i++)
