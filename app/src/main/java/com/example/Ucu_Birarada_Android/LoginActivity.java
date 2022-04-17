@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         this.checkInternet();
         this.init();
 
-
+        //Sil beni
     }
 
     private void init()
