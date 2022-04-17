@@ -55,8 +55,7 @@ public class SleepActivity extends AppCompatActivity {
     private String sleptData, wokeUpData, bestSleepAtData, worstSleepAtData;
     private List <Date> sleepTimeList;
     private List <Double> sleepQualityList;
-    private LineChartView lineChart;
-    private String sleepQualityData, totalSleepHoursData, timeListStr, qualityListStr, date;
+    private String sleepQualityData, totalSleepHoursData, timeListStr, qualityListStr, todaysDate;
 
     private ArrayList<String> qualityList;
     private ArrayList<String> timeList;
@@ -161,7 +160,6 @@ public class SleepActivity extends AppCompatActivity {
         bestSleepAt = (TextView) findViewById(R.id.bestSleepAt);
         worstSleepAt = (TextView) findViewById(R.id.worstSleepAt);
 
-        lineChart = findViewById(R.id.lineChart);
 
         qualityList = new ArrayList<>();
         timeList = new ArrayList<>();
@@ -310,7 +308,7 @@ public class SleepActivity extends AppCompatActivity {
                                 worstSleepAtData = jo.getString("worstSleepAt");
                                 sleepQualityData = jo.getString("averageSleepQuality");
                                 totalSleepHoursData = jo.getString("totalSleepHours");
-                                date = jo.getString("date");
+                                todaysDate = jo.getString("date");
 
                                 timeListStr = jo.getString("sleepTimeList");
                                 qualityListStr = jo.getString("sleepQualityList");
