@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BeachActivity">
+    tools:context=".MeditationActivities.BeachActivity">
 
     <ImageButton
         android:id="@+id/backToMeditationSnow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_arrow_back_ios_24"
+        android:src="@drawable/ic_baseline_keyboard_arrow_up_24"
         android:layout_alignParentEnd="true"
-        android:elevation="100dp"
+        android:elevation="10dp"
         android:onClick="goBackToMeditation"
         />
 
