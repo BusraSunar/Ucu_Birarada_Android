@@ -123,22 +123,6 @@
 
 
             </androidx.cardview.widget.CardView>
-
-            <Button
-                android:layout_width="100dp"
-                android:layout_height="75dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:onClick="logout"
-                android:text="Logout TEST"
-                android:textColor="@color/black" />
-
-
-
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

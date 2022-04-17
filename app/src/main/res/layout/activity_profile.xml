@@ -271,11 +271,24 @@
         android:visibility="visible">
 
         <ImageButton
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/settingsId"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="3dp"
+            android:background="@android:color/transparent"
+            android:onClick="logout"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_baseline_exit_to_app_24" />
+
+        <ImageButton
+            android:id="@+id/settingsId"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="25dp"
