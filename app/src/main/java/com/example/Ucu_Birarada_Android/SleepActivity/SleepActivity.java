@@ -27,6 +27,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.db.williamchart.data.DataPoint;
+import com.db.williamchart.view.LineChartView;
 import com.example.Ucu_Birarada_Android.ChatActivities.ChatActivity;
 import com.example.Ucu_Birarada_Android.HomeActivity;
 import com.example.Ucu_Birarada_Android.MeditationActivities.MeditationActivity;
@@ -37,19 +39,28 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class SleepActivity extends AppCompatActivity {
 
     private static final int MY_PERMISSIONS_RECORD_AUDIO = 1;
-    private SoundMeter soundMeter;
     private BottomNavigationView bottomNavigationView;
     private TextView dateView, timeView;
     private TextView slept, wokeUp, sleepQuality, totalSleep, bestSleepAt, worstSleepAt;
     private String sleptData, wokeUpData, bestSleepAtData, worstSleepAtData;
-    private String sleepQualityData;
-    private String totalSleepHoursData;
+    private List <Date> sleepTimeList;
+    private List <Double> sleepQualityList;
+    private String sleepQualityData, totalSleepHoursData, timeListStr, qualityListStr, todaysDate;
+
+    private ArrayList<String> qualityList;
+    private ArrayList<String> timeList;
+
+
 
 
 
@@ -148,8 +159,18 @@ public class SleepActivity extends AppCompatActivity {
         totalSleep = (TextView) findViewById(R.id.totalSleep);
         bestSleepAt = (TextView) findViewById(R.id.bestSleepAt);
         worstSleepAt = (TextView) findViewById(R.id.worstSleepAt);
+
+
+        qualityList = new ArrayList<>();
+        timeList = new ArrayList<>();
+
+        drawLineChart();
+
     }
 
+    private void drawLineChart(){
+
+    }
 
     //Get Data
 
@@ -281,12 +302,29 @@ public class SleepActivity extends AppCompatActivity {
                             for (int i = 0; i < jsonArray.length(); i++)
                             {
                                 JSONObject jo = jsonArray.getJSONObject(i);
-                                sleptData = (String) jo.getString("sleepStartTime");
-                                wokeUpData = (String) jo.getString("sleepEndTime");
-                                bestSleepAtData = (String) jo.getString("bestSleepAt");
-                                worstSleepAtData = (String) jo.getString("worstSleepAt");
+                                sleptData = jo.getString("sleepStartTime");
+                                wokeUpData = jo.getString("sleepEndTime");
+                                bestSleepAtData = jo.getString("bestSleepAt");
+                                worstSleepAtData = jo.getString("worstSleepAt");
                                 sleepQualityData = jo.getString("averageSleepQuality");
-                                totalSleepHoursData =  jo.getString("totalSleepHours");
+                                totalSleepHoursData = jo.getString("totalSleepHours");
+                                todaysDate = jo.getString("date");
+
+                                timeListStr = jo.getString("sleepTimeList");
+                                qualityListStr = jo.getString("sleepQualityList");
+
+                                JSONArray time = new JSONArray(timeListStr);
+                                JSONArray quality = new JSONArray(qualityListStr);
+
+                                for (int j = 0; j < time.length(); j++){
+                                    timeList.add(time.getString(j));
+                                    System.out.println("Time List -- " + j + "  ---> " + timeList.get(j));
+                                }
+                                for (int j = 0; j < quality.length(); j++){
+                                    qualityList.add(quality.getString(j));
+                                    System.out.println("Quality List -- " + j + "  ---> " + qualityList.get(j));
+                                }
+
 
                                 slept.setText(sleptData.substring(11,16).replace(":" , " : "));
                                 wokeUp.setText(wokeUpData.substring(11,16).replace(":" , " : "));
@@ -294,7 +332,7 @@ public class SleepActivity extends AppCompatActivity {
                                 worstSleepAt.setText(worstSleepAtData.substring(11,16).replace(":" , " : "));
                                 double temp = Double.parseDouble(sleepQualityData);
                                 sleepQuality.setText(new DecimalFormat("##.#").format(temp));
-                                totalSleep.setText(""+totalSleepHoursData);
+                                totalSleep.setText(totalSleepHoursData);
 
                                 System.out.println("SLEEP GET  ------->    " + jo.toString());
 

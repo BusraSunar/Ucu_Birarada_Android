@@ -18,6 +18,7 @@ import android.view.View;
 
 import com.example.Ucu_Birarada_Android.ChatActivities.ChatActivity;
 import com.example.Ucu_Birarada_Android.HomeActivity;
+import com.example.Ucu_Birarada_Android.LoginActivity;
 import com.example.Ucu_Birarada_Android.ProfileActivity;
 import com.example.Ucu_Birarada_Android.R;
 import com.example.Ucu_Birarada_Android.SleepActivity.SleepActivity;
@@ -171,6 +172,9 @@ public class MeditationActivity extends AppCompatActivity {
         finish();
     }
 
+
+
+
     public void goToSnowScene(View view) {
         Intent intent = new Intent(MeditationActivity.this, SnowActivity.class);
         intent.putExtra("token", token);
@@ -190,4 +194,6 @@ public class MeditationActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+
 }

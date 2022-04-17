@@ -59,42 +59,52 @@ public class AchievementAdapter extends ArrayAdapter<AchievementModel> {
 
         holder.toDo.setText(array.get(position).getDescription());
         if(position == 0)
-            if(array.get(position).getGoal().equalsIgnoreCase("true"))
+            if(array.get(position).getOccurred().equalsIgnoreCase("true"))
                 holder.icon.setBackgroundResource(R.drawable.star);
             else
                 holder.icon.setBackgroundResource(R.drawable.starcross);
         else if(position == 1)
-            if(array.get(position).getGoal().equalsIgnoreCase("true"))
+            if(array.get(position).getOccurred().equalsIgnoreCase("true"))
                 holder.icon.setBackgroundResource(R.drawable.callender);
             else
                 holder.icon.setBackgroundResource(R.drawable.callendercross);
 
         else if(position == 2)
-            if(array.get(position).getGoal().equalsIgnoreCase("true"))
+            if(array.get(position).getOccurred().equalsIgnoreCase("true"))
                 holder.icon.setBackgroundResource(R.drawable.cake);
             else
                 holder.icon.setBackgroundResource(R.drawable.cakecross);
         else if(position == 3)
-            if(array.get(position).getGoal().equalsIgnoreCase("true"))
+            if(array.get(position).getOccurred().equalsIgnoreCase("true"))
                 holder.icon.setBackgroundResource(R.drawable.chatpng);
             else
                 holder.icon.setBackgroundResource(R.drawable.chatcross);
-
         else if(position == 4)
-            if(array.get(position).getGoal().equalsIgnoreCase("true"))
+            if(array.get(position).getOccurred().equalsIgnoreCase("true"))
                 holder.icon.setBackgroundResource(R.drawable.moonach);
             else
                 holder.icon.setBackgroundResource(R.drawable.mooncross);
         else if(position == 5)
-            if(array.get(position).getGoal().equalsIgnoreCase("true"))
+            if(array.get(position).getOccurred().equalsIgnoreCase("true"))
                 holder.icon.setBackgroundResource(R.drawable.tick);
             else
                 holder.icon.setBackgroundResource(R.drawable.tickcross);
-        else
-        {
-            holder.toDo.setVisibility(View.INVISIBLE);
-            holder.icon.setVisibility(View.INVISIBLE);
-        }
+        else if(position == 6)
+            if(array.get(position).getOccurred().equalsIgnoreCase("true"))
+                holder.icon.setBackgroundResource(R.drawable.clock);
+            else
+                holder.icon.setBackgroundResource(R.drawable.clockcross);
+        else if(position == 7)
+            if(array.get(position).getOccurred().equalsIgnoreCase("true"))
+                holder.icon.setBackgroundResource(R.drawable.sleepthree);
+            else
+                holder.icon.setBackgroundResource(R.drawable.sleepthreecross);
+        else if(position == 8)
+            if(array.get(position).getOccurred().equalsIgnoreCase("true"))
+                holder.icon.setBackgroundResource(R.drawable.todoachhh);
+            else
+                holder.icon.setBackgroundResource(R.drawable.todocross);
+
 
 
 

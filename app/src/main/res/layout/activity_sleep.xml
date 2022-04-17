@@ -395,27 +395,30 @@
                     android:layout_marginBottom="10dp" />-->
 
 
-                <com.db.williamchart.view.LineChartView
-                    android:id="@+id/SleepActivityChartID"
+
+                <lecho.lib.hellocharts.view.LineChartView
+                    android:id="@+id/lineChart"
                     android:layout_width="400dp"
                     android:layout_height="200dp"
                     android:layout_below="@id/days"
-                    android:layout_margin="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:clickable="false"
                     app:chart_gridEffect="dashed"
                     app:chart_labelsColor="@color/green"
                     app:chart_labelsSize="10sp"
-                    android:clickable="false"
                     app:chart_lineColor="@color/green"
                     app:chart_lineThickness="1dp"
-                    app:chart_smoothLine="true"
-                    />
+                    app:chart_smoothLine="true" />
 
 
                 <View
                     android:id="@+id/line"
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
-                    android:layout_below="@id/SleepActivityChartID"
+                    android:layout_below="@id/lineChart"
                     android:layout_marginHorizontal="10dp"
                     android:background="@android:color/darker_gray" />
 
