@@ -3,19 +3,15 @@ package com.example.Ucu_Birarada_Android;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-
 import android.net.ConnectivityManager;
 import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
-import android.telephony.ClosedSubscriberGroupInfo;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -23,8 +19,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -238,7 +234,7 @@ public class RegisterActivity extends AppCompatActivity{
         String surname = lastnameText.getText().toString();
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
-        final String URL = "http://10.2.36.131:8080/user/signup";
+        final String URL = "http://10.2.36.80:8080/user/signup";
         int genid=radioGroup.getCheckedRadioButtonId();
         RadioButton radioButton = (RadioButton) findViewById(genid);
         String gender=radioButton.getText().toString();
@@ -336,7 +332,6 @@ public class RegisterActivity extends AppCompatActivity{
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    System.out.println(error.getMessage().toString());
                     Toast.makeText(RegisterActivity.this , "Bu email adresi kullanılmaktadır." , Toast.LENGTH_SHORT).show();
                 }
             }) {
@@ -367,6 +362,10 @@ public class RegisterActivity extends AppCompatActivity{
                 }
             };
 
+            stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                    0,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             requestQueue.add(stringRequest);
         } catch (JSONException e) {
             e.printStackTrace();

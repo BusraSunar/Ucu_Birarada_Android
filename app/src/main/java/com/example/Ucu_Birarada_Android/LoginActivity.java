@@ -1,10 +1,8 @@
 package com.example.Ucu_Birarada_Android;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.app.Application;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.app.ProgressDialog;
@@ -14,21 +12,15 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkResponse;
-import com.android.volley.Request;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.Ucu_Birarada_Android.StaticAnket.first_questionnaire_questions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,9 +30,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -62,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
     private boolean didUserCompleteForm;
     private boolean flag = false;
     private FirebaseAuth auth;
-    private final String URL = "http://10.2.40.82:8080/user/signin";
+    private final String URL = "http://10.2.36.80:8080/user/signin";
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -130,6 +119,10 @@ public class LoginActivity extends AppCompatActivity {
 
                                                                 if (didUserCompleteForm){
                                                                     Intent intent = new Intent(LoginActivity.this , HomeActivity.class);
+                                                                    intent.putExtra("token", token);
+                                                                    intent.putExtra("tokenType", tokenType);
+                                                                    intent.putExtra("email", emailFromPref);
+                                                                    intent.putExtra("password", passFromPref);
                                                                     startActivity(intent);
                                                                     finish();
                                                                 }
@@ -175,6 +168,10 @@ public class LoginActivity extends AppCompatActivity {
                                             };
 
                                             // add the request object to the queue to be executed
+                                            req.setRetryPolicy(new DefaultRetryPolicy(
+                                                    0,
+                                                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                                                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                                             queue.add(req);
                                             if(dialog.isShowing())
                                             {
@@ -306,11 +303,14 @@ public class LoginActivity extends AppCompatActivity {
 
                             if (didUserCompleteForm){
                                 Intent intent = new Intent(LoginActivity.this , HomeActivity.class);
+                                intent.putExtra("token", token);
+                                intent.putExtra("tokenType", tokenType);
+                                intent.putExtra("email", email);
+                                intent.putExtra("password", password);
                                 startActivity(intent);
                                 finish();
                             }
                             else {
-                                dialog.dismiss();
                                 Intent intent = new Intent(LoginActivity.this , first_questionnaire_questions.class);
                                 intent.putExtra("token", token);
                                 intent.putExtra("tokenType", tokenType);
@@ -361,6 +361,10 @@ public class LoginActivity extends AppCompatActivity {
         };
 
         // add the request object to the queue to be executed
+        req.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(req);
 
 

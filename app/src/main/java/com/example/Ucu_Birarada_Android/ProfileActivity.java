@@ -8,7 +8,6 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.icu.text.SimpleDateFormat;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -20,6 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -33,13 +33,10 @@ import com.example.Ucu_Birarada_Android.SleepActivity.SleepActivity;
 import com.example.Ucu_Birarada_Android.toDoAndAchivements.AchivementActivity;
 import com.example.Ucu_Birarada_Android.toDoAndAchivements.ToDoActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.text.ParseException;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -63,8 +60,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     private String token;
     private String tokenType;
+    private String password;
 
-    final String URL = "http://10.2.36.114:8080/profile";
+    final String URL = "http://10.2.36.80:8080/profile";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +109,8 @@ public class ProfileActivity extends AppCompatActivity {
         Intent intent = getIntent();
         tokenType = intent.getStringExtra("tokenType");
         token = intent.getStringExtra("token");
+        email = intent.getStringExtra("email");
+        password = intent.getStringExtra("password");
         this.getUserDataFrom();
     }
 
@@ -159,6 +159,8 @@ public class ProfileActivity extends AppCompatActivity {
                     intent = new Intent(ProfileActivity.this , SleepActivity.class);
                     intent.putExtra("token", token);
                     intent.putExtra("tokenType", tokenType);
+                    intent.putExtra("email", email);
+                    intent.putExtra("password", password);
                     startActivity(intent);
                     overridePendingTransition(0,0);
                     break;
@@ -166,6 +168,8 @@ public class ProfileActivity extends AppCompatActivity {
                     intent = new Intent(ProfileActivity.this , MeditationActivity.class);
                     intent.putExtra("token", token);
                     intent.putExtra("tokenType", tokenType);
+                    intent.putExtra("email", email);
+                    intent.putExtra("password", password);
                     startActivity(intent);
                     overridePendingTransition(0,0);
                     break;
@@ -173,6 +177,8 @@ public class ProfileActivity extends AppCompatActivity {
                     intent = new Intent(ProfileActivity.this , ChatActivity.class);
                     intent.putExtra("token", token);
                     intent.putExtra("tokenType", tokenType);
+                    intent.putExtra("email", email);
+                    intent.putExtra("password", password);
                     startActivity(intent);
                     overridePendingTransition(0,0);
                     break;
@@ -180,6 +186,8 @@ public class ProfileActivity extends AppCompatActivity {
                     intent = new Intent(ProfileActivity.this , ProfileActivity.class);
                     intent.putExtra("token", token);
                     intent.putExtra("tokenType", tokenType);
+                    intent.putExtra("email", email);
+                    intent.putExtra("password", password);
                     startActivity(intent);
                     overridePendingTransition(0,0);
                     break;
@@ -196,7 +204,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-        final String URL = "http://10.2.36.114:8080/profile";
+        final String URL = "http://10.2.36.80:8080/profile";
         // Post params to be sent to the server
         System.out.println(tokenType);
         System.out.println(token);
@@ -254,6 +262,10 @@ public class ProfileActivity extends AppCompatActivity {
         };
 
         // add the request object to the queue to be executed
+        req.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(req);
 
 
@@ -334,6 +346,10 @@ public class ProfileActivity extends AppCompatActivity {
         };
 
         // add the request object to the queue to be executed
+        req.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(req);
         finish();
         startActivity(getIntent());
@@ -406,6 +422,8 @@ public class ProfileActivity extends AppCompatActivity {
         Intent intent = new Intent(ProfileActivity.this , ToDoActivity.class);
         intent.putExtra("token", token);
         intent.putExtra("tokenType", tokenType);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
         startActivity(intent);
     }
 
@@ -413,6 +431,8 @@ public class ProfileActivity extends AppCompatActivity {
         Intent intentt = new Intent(ProfileActivity.this , AchivementActivity.class);
         intentt.putExtra("token", token);
         intentt.putExtra("tokenType", tokenType);
+        intentt.putExtra("email", email);
+        intentt.putExtra("password", password);
         startActivity(intentt);
     }
 

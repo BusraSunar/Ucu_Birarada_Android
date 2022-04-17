@@ -2,7 +2,6 @@ package com.example.Ucu_Birarada_Android;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
 
+@SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
 
     AnimationDrawable logoAnimation;

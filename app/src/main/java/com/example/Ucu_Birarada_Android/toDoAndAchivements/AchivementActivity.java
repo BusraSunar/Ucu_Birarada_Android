@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -43,7 +44,7 @@ public class AchivementActivity extends AppCompatActivity {
     private ListView achievementListView;
     private AchievementAdapter achievementAdapter;
     public static Context context;
-    private final String URL = "http://10.2.37.147:8080/achievement";
+    private final String URL = "http://10.2.36.80:8080/achievement";
     private String email;
     private String password;
 
@@ -143,6 +144,10 @@ public class AchivementActivity extends AppCompatActivity {
             }
         };
 
+        req.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(req);
 
     }

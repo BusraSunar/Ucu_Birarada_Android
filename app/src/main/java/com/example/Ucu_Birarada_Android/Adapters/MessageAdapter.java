@@ -13,9 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.Ucu_Birarada_Android.Models.ChatMessage;
 import com.example.Ucu_Birarada_Android.R;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class MessageAdapter extends RecyclerView.Adapter {

@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -39,7 +40,7 @@ public class fifth_questionnaire_questions extends AppCompatActivity {
     private String tokenType;
     private String email;
     private String password;
-    private final String URL = "http://10.2.40.82:8080/question/submitAnswers";
+    private final String URL = "http://10.2.36.80:8080/question/submitAnswers";
     public static Context context;
     private int answered;
 
@@ -263,6 +264,10 @@ public class fifth_questionnaire_questions extends AppCompatActivity {
                 };
 
                 // add the request object to the queue to be executed
+                req.setRetryPolicy(new DefaultRetryPolicy(
+                        0,
+                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                 queue.add(req);
 
                 Intent intent = new Intent(fifth_questionnaire_questions.this, HomeActivity.class);            Bundle extra = new Bundle();

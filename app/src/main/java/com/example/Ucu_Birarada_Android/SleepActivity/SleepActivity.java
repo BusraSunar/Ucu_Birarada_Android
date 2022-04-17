@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -32,20 +33,10 @@ import com.example.Ucu_Birarada_Android.MeditationActivities.MeditationActivity;
 import com.example.Ucu_Birarada_Android.ProfileActivity;
 import com.example.Ucu_Birarada_Android.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.text.DecimalFormat;
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -67,7 +58,7 @@ public class SleepActivity extends AppCompatActivity {
     private String email;
     private String password;
 
-    private final static String URL = "http://10.2.36.114:8080/sleep/mobile";
+    private final static String URL = "http://10.2.36.80:8080/sleep/mobile";
 
 
     @Override
@@ -330,7 +321,10 @@ public class SleepActivity extends AppCompatActivity {
                 return headers;
             }
         };
-
+        req.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(req);
     }
 

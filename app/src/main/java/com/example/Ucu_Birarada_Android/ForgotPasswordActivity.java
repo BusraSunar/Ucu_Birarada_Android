@@ -2,12 +2,11 @@ package com.example.Ucu_Birarada_Android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -20,7 +19,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
 
@@ -37,7 +35,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        final String URL = "http://10.2.36.78:8080/user/forgotPass?email=" + str_email;
+        final String URL = "http://10.2.36.80:8080/user/forgotPass?email=" + str_email;
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("email", str_email);
 
@@ -66,6 +64,10 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         }){
 
         };
+        req.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(req);
 
     }

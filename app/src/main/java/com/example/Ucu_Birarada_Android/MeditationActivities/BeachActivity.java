@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.Ucu_Birarada_Android.ProfileActivity;
 import com.example.Ucu_Birarada_Android.R;
+import com.example.Ucu_Birarada_Android.toDoAndAchivements.AchivementActivity;
 import com.google.vr.sdk.widgets.video.VrVideoEventListener;
 import com.google.vr.sdk.widgets.video.VrVideoView;
 
@@ -18,6 +20,10 @@ public class BeachActivity extends Activity {
     private Uri fileUri;
     private VrVideoView.Options videoOptions = new VrVideoView.Options();
     protected VrVideoView videoWidgetView;
+    private String token;
+    private String tokenType;
+    private String email;
+    private String password;
 
 
     @Override
@@ -25,6 +31,12 @@ public class BeachActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beach);
 
+
+        Intent intent = getIntent();
+        tokenType = intent.getStringExtra("tokenType");
+        token = intent.getStringExtra("token");
+        email = intent.getStringExtra("email");
+        password = intent.getStringExtra("password");
         //statusText = (TextView) findViewById(R.id.status_text);
 
         videoWidgetView = (VrVideoView) findViewById(R.id.video_view);
@@ -122,7 +134,25 @@ public class BeachActivity extends Activity {
         onPause();
         onDestroy();
         Intent intent = new Intent(BeachActivity.this, MeditationActivity.class);
+        intent.putExtra("token", token);
+        intent.putExtra("tokenType", tokenType);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
         startActivity(intent);
         finish();
     }
+
+
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(BeachActivity.this , MeditationActivity.class);
+        intent.putExtra("token", token);
+        intent.putExtra("tokenType", tokenType);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
+        startActivity(intent);
+        finish();
+    }
+
 }

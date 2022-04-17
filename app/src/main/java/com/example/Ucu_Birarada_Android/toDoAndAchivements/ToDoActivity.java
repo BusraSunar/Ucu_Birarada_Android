@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -56,7 +57,7 @@ public class ToDoActivity extends AppCompatActivity{
     private String email;
     private String password;
 
-    final String URL = "http://10.2.36.114:8080/profile/todo";
+    final String URL = "http://10.2.36.80:8080/profile/todo";
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -175,15 +176,6 @@ public class ToDoActivity extends AppCompatActivity{
         //this.getUserData();
         this.getUserData();
 
-
-
-
-
-
-
-
-
-
     }
 
     public void addTask(View view)
@@ -299,7 +291,10 @@ public class ToDoActivity extends AppCompatActivity{
                 return headers;
             }
         };
-
+        req.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(req);
     }
 
@@ -354,6 +349,10 @@ public class ToDoActivity extends AppCompatActivity{
         };
 
         // add the request object to the queue to be executed
+        req.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(req);
 
     }
@@ -364,7 +363,7 @@ public class ToDoActivity extends AppCompatActivity{
         RequestQueue queue = Volley.newRequestQueue(this);
 
 
-        final String URL = "http://10.2.36.114:8080/profile/todo";
+        final String URL = "http://10.2.36.80:8080/profile/todo";
         // Post params to be sent to the server
         HashMap<String, String> params = new HashMap<>();
         params.put("task", taskModel.getTask());
@@ -409,6 +408,10 @@ public class ToDoActivity extends AppCompatActivity{
         };
 
         // add the request object to the queue to be executed
+        req.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(req);
 
     }

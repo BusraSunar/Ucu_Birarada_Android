@@ -9,6 +9,7 @@ import android.widget.Chronometer;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -44,8 +45,8 @@ public class SleepCounterActivity extends AppCompatActivity {
     private ArrayList<SleepDataModel> soundData;
     private String token;
     private String tokenType;
-    private final String URL = "http://10.2.37.108:8080/sleep";
-    private final String URLFORACH = "http://10.2.37.108:8080/sleep";
+    private final String URL = "http://10.2.36.80:8080/sleep";
+    private final String URLFORACH = "http://10.2.36.80:8080/sleep";
     private String email;
     private String password;
     private Instant start = Instant.now();
@@ -204,7 +205,10 @@ public class SleepCounterActivity extends AppCompatActivity {
                 return headers;
             }
         };
-
+        req.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(req);
     }
 
@@ -244,7 +248,10 @@ public class SleepCounterActivity extends AppCompatActivity {
                 return headers;
             }
         };
-
+        req.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(req);
     }
 
