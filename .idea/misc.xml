@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/drawable/logo_anim.xml" value="0.162" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/drawable/splash_anim.xml" value="0.162" />
+        <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_achivement.xml" value="0.2006340579710145" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_beach.xml" value="0.17300724637681159" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_chat.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_chat_main.xml" value="0.12360688956433637" />
@@ -16,11 +17,16 @@
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_login.xml" value="0.1598731884057971" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_meditation.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_profile.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_redirect.xml" value="0.2006340579710145" />
+        <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_register.xml" value="0.19384057971014493" />
+        <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_sleep.xml" value="0.19384057971014493" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_snow.xml" value="0.17300724637681159" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_splash.xml" value="0.17300724637681159" />
+        <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_to_do.xml" value="0.2006340579710145" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/item_container_recieved_message.xml" value="0.12360688956433637" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/item_container_sent_message.xml" value="0.12360688956433637" />
-        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.4428671350873683" />
+        <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/todo_list_row.xml" value="0.19384057971014493" />
       </map>
     </option>
   </component>

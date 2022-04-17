@@ -671,6 +671,7 @@
             app:backgroundTint="@color/green"
             app:fabCustomSize="75dp"
             app:maxImageSize="60dp"
+            android:onClick="goToHome"
             app:tint="@android:color/white" />
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>

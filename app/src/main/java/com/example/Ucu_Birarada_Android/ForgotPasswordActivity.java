@@ -43,7 +43,6 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        System.out.println("FORGOTPASSWORD 60  " + response);
                         JSONObject jsonObject = null;
                         try {
                             jsonObject = new JSONObject(String.valueOf(response));
@@ -58,7 +57,6 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                forgotEmail.setError("Wrong email address");
                 VolleyLog.e("Error: ", error.getMessage());
             }
         }){

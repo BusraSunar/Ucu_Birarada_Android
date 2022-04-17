@@ -180,4 +180,14 @@ public class MeditationActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    public void goToHome(View view) {
+        Intent intent = new Intent(MeditationActivity.this, HomeActivity.class);
+        intent.putExtra("token", token);
+        intent.putExtra("tokenType", tokenType);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
+        startActivity(intent);
+        finish();
+    }
 }

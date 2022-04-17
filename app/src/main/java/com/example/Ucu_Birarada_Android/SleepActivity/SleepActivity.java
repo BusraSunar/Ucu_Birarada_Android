@@ -48,8 +48,8 @@ public class SleepActivity extends AppCompatActivity {
     private TextView dateView, timeView;
     private TextView slept, wokeUp, sleepQuality, totalSleep, bestSleepAt, worstSleepAt;
     private String sleptData, wokeUpData, bestSleepAtData, worstSleepAtData;
-    private Double sleepQualityData;
-    private int totalSleepHoursData;
+    private String sleepQualityData;
+    private String totalSleepHoursData;
 
 
 
@@ -281,19 +281,19 @@ public class SleepActivity extends AppCompatActivity {
                             for (int i = 0; i < jsonArray.length(); i++)
                             {
                                 JSONObject jo = jsonArray.getJSONObject(i);
-                                sleptData = (String) jo.get("sleepStartTime");
-                                wokeUpData = (String) jo.get("sleepEndTime");
-                                bestSleepAtData = (String) jo.get("bestSleepAt");
-                                worstSleepAtData = (String) jo.get("worstSleepAt");
-                                sleepQualityData = (Double) jo.get("averageSleepQuality");
-                                totalSleepHoursData = (int) jo.get("totalSleepHours");
-
+                                sleptData = (String) jo.getString("sleepStartTime");
+                                wokeUpData = (String) jo.getString("sleepEndTime");
+                                bestSleepAtData = (String) jo.getString("bestSleepAt");
+                                worstSleepAtData = (String) jo.getString("worstSleepAt");
+                                sleepQualityData = jo.getString("averageSleepQuality");
+                                totalSleepHoursData =  jo.getString("totalSleepHours");
 
                                 slept.setText(sleptData.substring(11,16).replace(":" , " : "));
                                 wokeUp.setText(wokeUpData.substring(11,16).replace(":" , " : "));
                                 bestSleepAt.setText(bestSleepAtData.substring(11,16).replace(":" , " : "));
                                 worstSleepAt.setText(worstSleepAtData.substring(11,16).replace(":" , " : "));
-                                sleepQuality.setText(new DecimalFormat("##.#").format(sleepQualityData));
+                                double temp = Double.parseDouble(sleepQualityData);
+                                sleepQuality.setText(new DecimalFormat("##.#").format(temp));
                                 totalSleep.setText(""+totalSleepHoursData);
 
                                 System.out.println("SLEEP GET  ------->    " + jo.toString());
@@ -326,6 +326,16 @@ public class SleepActivity extends AppCompatActivity {
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(req);
+    }
+
+    public void goToHome(View view) {
+        Intent intent = new Intent(SleepActivity.this, HomeActivity.class);
+        intent.putExtra("token", token);
+        intent.putExtra("tokenType", tokenType);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
+        startActivity(intent);
+        finish();
     }
 
 }
