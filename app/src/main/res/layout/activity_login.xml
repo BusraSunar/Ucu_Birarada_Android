@@ -36,7 +36,7 @@
             </ImageView>
 
             <androidx.cardview.widget.CardView
-                android:layout_width="250dp"
+                android:layout_width="290dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/iconID"
                 android:layout_centerHorizontal="true"
@@ -136,7 +136,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="20dp"
                         android:clickable="true"
                         android:onClick="signInBtnAction"
                         android:text="Don't have an account?"

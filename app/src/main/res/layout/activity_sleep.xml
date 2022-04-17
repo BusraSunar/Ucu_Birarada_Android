@@ -406,7 +406,6 @@
                     app:chart_labelsSize="10sp"
                     app:chart_lineColor="@color/green"
                     app:chart_lineThickness="1dp"
-                    app:chart_pointDrawable="drawable"
                     app:chart_smoothLine="true"
 
                     />
@@ -672,6 +671,7 @@
             app:backgroundTint="@color/green"
             app:fabCustomSize="75dp"
             app:maxImageSize="60dp"
+            android:onClick="goToHome"
             app:tint="@android:color/white" />
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>

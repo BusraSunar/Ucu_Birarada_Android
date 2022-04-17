@@ -628,11 +628,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="-15dp"
                 android:scaleType="center"
                 android:src="@drawable/logo_white"
                 app:backgroundTint="@color/green"
-                app:fabCustomSize="75dp"
+                android:layout_marginTop="4dp"
+                app:fabCustomSize="60dp"
                 app:maxImageSize="60dp"
                 app:tint="@android:color/white"/>
 

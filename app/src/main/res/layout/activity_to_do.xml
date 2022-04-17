@@ -20,7 +20,7 @@
         android:gravity="center"
         android:maxLines="1"
         android:padding="5dp"
-        android:text="Hedeflerim"
+        android:text="Tasks"
         android:textColor="@color/green"
         android:textSize="22sp"
         android:textStyle="bold" />
@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|center_vertical"
-            android:text="Henüz Bir Hedefiniz Yok"
+            android:text="You don't have any tasks"
             android:textSize="16sp"
             android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
@@ -85,7 +85,7 @@
         android:gravity="center"
         android:maxLines="1"
         android:padding="5dp"
-        android:text="Tamamlanan Hedeflerim"
+        android:text="Completed Tasks"
         android:textColor="@color/green"
         android:textSize="22sp"
         android:textStyle="bold" />
@@ -121,7 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/DoneTextViewID"
             android:layout_gravity="center_horizontal|center_vertical"
-            android:text="Henüz Tamamlanmış Bir Hedefiniz Yok"
+            android:text="You don't have any completed task"
             android:textSize="16sp"
             android:textStyle="bold" />
 
