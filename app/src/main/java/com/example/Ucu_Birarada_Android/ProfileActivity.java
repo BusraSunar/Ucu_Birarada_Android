@@ -435,6 +435,15 @@ public class ProfileActivity extends AppCompatActivity {
         intentt.putExtra("password", password);
         startActivity(intentt);
     }
+    public void goToHome(View view) {
+        Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
+        intent.putExtra("token", token);
+        intent.putExtra("tokenType", tokenType);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
+        startActivity(intent);
+        finish();
+    }
 
 }
 
