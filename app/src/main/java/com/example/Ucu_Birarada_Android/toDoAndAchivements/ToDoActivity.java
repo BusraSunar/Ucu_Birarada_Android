@@ -1,6 +1,5 @@
 package com.example.Ucu_Birarada_Android.toDoAndAchivements;
 
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,6 +29,7 @@ import com.example.Ucu_Birarada_Android.CustomListView.SwipeListViewTouchListene
 import com.example.Ucu_Birarada_Android.Models.ToDoModel;
 import com.example.Ucu_Birarada_Android.ProfileActivity;
 import com.example.Ucu_Birarada_Android.R;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,7 +56,7 @@ public class ToDoActivity extends AppCompatActivity{
     private String email;
     private String password;
 
-    final String URL = "http://10.2.36.131:8080/profile/todo";
+    final String URL = "http://10.2.36.114:8080/profile/todo";
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -364,7 +364,7 @@ public class ToDoActivity extends AppCompatActivity{
         RequestQueue queue = Volley.newRequestQueue(this);
 
 
-        final String URL = "http://10.2.37.139:8080/profile/todo";
+        final String URL = "http://10.2.36.114:8080/profile/todo";
         // Post params to be sent to the server
         HashMap<String, String> params = new HashMap<>();
         params.put("task", taskModel.getTask());

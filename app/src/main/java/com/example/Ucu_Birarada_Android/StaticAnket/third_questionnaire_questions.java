@@ -9,15 +9,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
-
-
+import android.widget.Toast;
 import com.example.Ucu_Birarada_Android.R;
-
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class third_questionnaire_questions extends AppCompatActivity {
 
-    private ArrayList<String> answers;
+    private ArrayList<HashMap<String,String>> answerForm;
     private ArrayList<RadioGroup> radioGroups;
     private ArrayList<RelativeLayout> containers;
 
@@ -25,14 +24,15 @@ public class third_questionnaire_questions extends AppCompatActivity {
     private String tokenType;
     private String email;
     private String password;
-
+    private int answered;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        answered = 0;
         super.onCreate(savedInstanceState);
         Bundle extra = getIntent().getBundleExtra("answers");
-        answers = (ArrayList<String>) extra.getSerializable("object");
-        setContentView(R.layout.activity_second_questionnaire_questions);
+        answerForm = (ArrayList<HashMap<String, String>>) extra.getSerializable("object");
+        setContentView(R.layout.activity_third_questionnaire_questions);
         this.init();
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -45,6 +45,7 @@ public class third_questionnaire_questions extends AppCompatActivity {
         }
 
         System.out.println("ANKET 3: "+ email + " " + password);
+
         //Buradan -- yaz
     }
 
@@ -57,90 +58,141 @@ public class third_questionnaire_questions extends AppCompatActivity {
     //private metotlar
     private void init()
     {
+        HashMap<String,String> answer = new HashMap<>();
+        answer.put("questionBody","I start conversations.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I am not interested in other people's problems.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I get chores done right away.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I am easily disturbed.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I have excellent ideas.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I have little to say.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I have a soft heart.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I often forget to put things back in their proper place.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I get upset easily.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I do not have a good imagination.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+
         containers = new ArrayList<>();
         radioGroups = new ArrayList<RadioGroup>(25);
-        radioGroups.add(findViewById(R.id.FirstQuestionnaireFirstItemRadioGroupID));
+        radioGroups.add(findViewById(R.id.ThirdQuestionnaireFirstItemRadioGroupID));
 
         radioGroups.get(0).setVisibility(View.VISIBLE);
         radioGroups.get(0).setOnCheckedChangeListener(new FadeOnCheckedListener());
 
-        RelativeLayout iterate = findViewById(R.id.FirstQuestionnaireFirstContainerID);
+        RelativeLayout iterate = findViewById(R.id.ThirdQuestionnaireFirstContainerID);
         iterate.setOnClickListener(new AppearOnClickListener());
         containers.add(iterate);
 
-        radioGroups.add(findViewById(R.id.FirstQuestionnaireSecondItemRadioGroupID));
+        radioGroups.add(findViewById(R.id.ThirdQuestionnaireSecondItemRadioGroupID));
         radioGroups.get(1).setVisibility(View.GONE);
         radioGroups.get(1).setOnCheckedChangeListener(new FadeOnCheckedListener());
 
-        iterate = findViewById(R.id.FirstQuestionnaireSecondContainerID);
+        iterate = findViewById(R.id.ThirdQuestionnaireSecondContainerID);
         iterate.setOnClickListener(new AppearOnClickListener());
         containers.add(iterate);
 
-        radioGroups.add(findViewById(R.id.FirstQuestionnaireThirdItemRadioGroupID));
+        radioGroups.add(findViewById(R.id.ThirdQuestionnaireThirdItemRadioGroupID));
         radioGroups.get(2).setVisibility(View.GONE);
         radioGroups.get(2).setOnCheckedChangeListener(new FadeOnCheckedListener());
 
-        iterate = findViewById(R.id.FirstQuestionnaireThirdContainerID);
+        iterate = findViewById(R.id.ThirdQuestionnaireThirdContainerID);
         iterate.setOnClickListener(new AppearOnClickListener());
         containers.add(iterate);
 
-        radioGroups.add(findViewById(R.id.FirstQuestionnaireFourthItemRadioGroupID));
+        radioGroups.add(findViewById(R.id.ThirdQuestionnaireFourthItemRadioGroupID));
         radioGroups.get(3).setVisibility(View.GONE);
         radioGroups.get(3).setOnCheckedChangeListener(new FadeOnCheckedListener());
 
-        iterate = findViewById(R.id.FirstQuestionnaireFourthContainerID);
+        iterate = findViewById(R.id.ThirdQuestionnaireFourthContainerID);
         iterate.setOnClickListener(new AppearOnClickListener());
         containers.add(iterate);
 
-        radioGroups.add(findViewById(R.id.FirstQuestionnaireFifthItemRadioGroupID));
+        radioGroups.add(findViewById(R.id.ThirdQuestionnaireFifthItemRadioGroupID));
         radioGroups.get(4).setVisibility(View.GONE);
         radioGroups.get(4).setOnCheckedChangeListener(new FadeOnCheckedListener());
 
-        iterate = findViewById(R.id.FirstQuestionnaireFifthContainerID);
+        iterate = findViewById(R.id.ThirdQuestionnaireFifthContainerID);
         iterate.setOnClickListener(new AppearOnClickListener());
         containers.add(iterate);
 
-        radioGroups.add(findViewById(R.id.FirstQuestionnaireSixthItemRadioGroupID));
+        radioGroups.add(findViewById(R.id.ThirdQuestionnaireSixthItemRadioGroupID));
         radioGroups.get(5).setVisibility(View.GONE);
         radioGroups.get(5).setOnCheckedChangeListener(new FadeOnCheckedListener());
 
-        iterate = findViewById(R.id.FirstQuestionnaireSixthContainerID);
+        iterate = findViewById(R.id.ThirdQuestionnaireSixthContainerID);
         iterate.setOnClickListener(new AppearOnClickListener());
         containers.add(iterate);
 
-        radioGroups.add(findViewById(R.id.FirstQuestionnaireSeventhItemRadioGroupID));
+        radioGroups.add(findViewById(R.id.ThirdQuestionnaireSeventhItemRadioGroupID));
         radioGroups.get(6).setVisibility(View.GONE);
         radioGroups.get(6).setOnCheckedChangeListener(new FadeOnCheckedListener());
 
-        iterate = findViewById(R.id.FirstQuestionnaireSeventhContainerID);
+        iterate = findViewById(R.id.ThirdQuestionnaireSeventhContainerID);
         iterate.setOnClickListener(new AppearOnClickListener());
         containers.add(iterate);
 
-        radioGroups.add(findViewById(R.id.FirstQuestionnaireEighthItemRadioGroupID));
+        radioGroups.add(findViewById(R.id.ThirdQuestionnaireEighthItemRadioGroupID));
         radioGroups.get(7).setVisibility(View.GONE);
         radioGroups.get(7).setOnCheckedChangeListener(new FadeOnCheckedListener());
 
-        iterate = findViewById(R.id.FirstQuestionnaireEighthContainerID);
+        iterate = findViewById(R.id.ThirdQuestionnaireEighthContainerID);
         iterate.setOnClickListener(new AppearOnClickListener());
         containers.add(iterate);
 
-        radioGroups.add(findViewById(R.id.FirstQuestionnaireNinethItemRadioGroupID));
+        radioGroups.add(findViewById(R.id.ThirdQuestionnaireNinethItemRadioGroupID));
         radioGroups.get(8).setVisibility(View.GONE);
         radioGroups.get(8).setOnCheckedChangeListener(new FadeOnCheckedListener());
 
-        iterate = findViewById(R.id.FirstQuestionnaireNinethContainerID);
+        iterate = findViewById(R.id.ThirdQuestionnaireNinethContainerID);
         iterate.setOnClickListener(new AppearOnClickListener());
         containers.add(iterate);
 
-        radioGroups.add(findViewById(R.id.FirstQuestionnaireTenthItemRadioGroupID));
+        radioGroups.add(findViewById(R.id.ThirdQuestionnaireTenthItemRadioGroupID));
         radioGroups.get(9).setVisibility(View.GONE);
         radioGroups.get(9).setOnCheckedChangeListener(new FadeOnCheckedListener());
 
-        iterate = findViewById(R.id.FirstQuestionnaireTenthContainerID);
+        iterate = findViewById(R.id.ThirdQuestionnaireTenthContainerID);
         iterate.setOnClickListener(new AppearOnClickListener());
         containers.add(iterate);
 
-        Button next = findViewById(R.id.FirstQuestionnaireNextButtonID);
+        Button next = findViewById(R.id.ThirdQuestionnaireNextButtonID);
         next.setOnClickListener(new NextPageOnClickListener());
 
     }
@@ -148,38 +200,49 @@ public class third_questionnaire_questions extends AppCompatActivity {
 
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(third_questionnaire_questions.this,fourth_questionnaire_questions.class);
-            Bundle extra = new Bundle();
-            extra.putSerializable("object",answers);
-            intent.putExtra("token", token);
-            intent.putExtra("tokenType", tokenType);
-            intent.putExtra("email", email);
-            intent.putExtra("password", password);
-            intent.putExtra("answers",extra);
-            startActivity(intent);
+            if (answered < 10 ){
+                Toast.makeText(third_questionnaire_questions.this,"Please answer all questions before moving to next page.",Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Intent intent = new Intent(third_questionnaire_questions.this,fourth_questionnaire_questions.class);
+                Bundle extra = new Bundle();
+                intent.putExtra("token", token);
+                intent.putExtra("tokenType", tokenType);
+                intent.putExtra("email", email);
+                intent.putExtra("password", password);
+                extra.putSerializable("object",answerForm);
+                intent.putExtra("answers",extra);
+                startActivity(intent);
+            }
+
         }
     }
     class FadeOnCheckedListener implements RadioGroup.OnCheckedChangeListener {
         @Override
         public void onCheckedChanged(RadioGroup radioGroup, int i) {
             radioGroup.setVisibility(View.GONE);
+            int currentLocation = 0;
             for (int y = 0; y < radioGroups.size(); y++){
+                currentLocation = y + 20;
                 if (radioGroups.get(y).equals(radioGroup)){
+                    if (answerForm.get(currentLocation).get("answer").equals("")){
+                        answered++;
+                    }
                     switch (i%5){
                         case 0:
-                            answers.set(y,"Completely Agree");
+                            answerForm.get(currentLocation).put("answer","Completely Agree");
                             break;
                         case 1:
-                            answers.set(y,"Agree");
+                            answerForm.get(currentLocation).put("answer","Agree");
                             break;
                         case 2:
-                            answers.set(y,"Nor Agree Nor Disagree");
+                            answerForm.get(currentLocation).put("answer","Nor Agree Nor Disagree");
                             break;
                         case 3:
-                            answers.set(y,"Disagree");
+                            answerForm.get(currentLocation).put("answer","Disagree");
                             break;
                         case 4:
-                            answers.set(y,"Completely Disagree");
+                            answerForm.get(currentLocation).put("answer","Completely Disagree");
                             break;
                     }
                     if (y != radioGroups.size() -1){

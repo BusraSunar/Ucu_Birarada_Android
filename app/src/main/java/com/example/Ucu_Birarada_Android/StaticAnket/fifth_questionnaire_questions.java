@@ -1,6 +1,5 @@
 package com.example.Ucu_Birarada_Android.StaticAnket;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -32,7 +31,7 @@ import java.util.Map;
 
 public class fifth_questionnaire_questions extends AppCompatActivity {
 
-    private ArrayList<String> answers;
+    private ArrayList<HashMap<String,String>> answerForm;
     private ArrayList<RadioGroup> radioGroups;
     private ArrayList<RelativeLayout> containers;
 
@@ -40,21 +39,25 @@ public class fifth_questionnaire_questions extends AppCompatActivity {
     private String tokenType;
     private String email;
     private String password;
-    private final String URL = "http://10.2.37.139:8080/question/submitAnswers";
+    private final String URL = "http://10.2.40.82:8080/question/submitAnswers";
     public static Context context;
+    private int answered;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        answered = 0;
         super.onCreate(savedInstanceState);
         Bundle extra = getIntent().getBundleExtra("answers");
-        answers = (ArrayList<String>) extra.getSerializable("object");
-        setContentView(R.layout.activity_second_questionnaire_questions);
+        answerForm = (ArrayList<HashMap<String,String>>) extra.getSerializable("object");
+        setContentView(R.layout.activity_fifth_questionnaire_questions);
         this.init();
         context = getApplicationContext();
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        if (extras != null) {
+        if(extras!=null)
+        {
             tokenType = intent.getStringExtra("tokenType");
             token = intent.getStringExtra("token");
             email = intent.getStringExtra("email");
@@ -63,181 +66,259 @@ public class fifth_questionnaire_questions extends AppCompatActivity {
 
 
         //Buradan -- yaz
-        System.out.println("ANKET 5: " + email + " " + password);
+        System.out.println("ANKET 5: "+ email + " " + password);
     }
 
 
+
     //private metotlar
-    private void init() {
+    private void init()
+    {
+
+        HashMap<String,String> answer = new HashMap<>();
+        answer.put("questionBody","I don't mind being the center of attention.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I feel others' emotions.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I follow a schedule.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I get irritated easily.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I spend time reflecting on things.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I am quiet around strangers.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I make people feel at ease.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I am exacting in my work.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I often feel blue.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I am full of ideas.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
         containers = new ArrayList<>();
         radioGroups = new ArrayList<RadioGroup>(25);
-        radioGroups.add(findViewById(R.id.FirstQuestionnaireFirstItemRadioGroupID));
+        radioGroups.add(findViewById(R.id.FifthQuestionnaireFirstItemRadioGroupID));
 
         radioGroups.get(0).setVisibility(View.VISIBLE);
         radioGroups.get(0).setOnCheckedChangeListener(new FadeOnCheckedListener());
 
-        RelativeLayout iterate = findViewById(R.id.FirstQuestionnaireFirstContainerID);
+        RelativeLayout iterate = findViewById(R.id.FifthQuestionnaireFirstContainerID);
         iterate.setOnClickListener(new AppearOnClickListener());
         containers.add(iterate);
 
-        radioGroups.add(findViewById(R.id.FirstQuestionnaireSecondItemRadioGroupID));
+        radioGroups.add(findViewById(R.id.FifthQuestionnaireSecondItemRadioGroupID));
         radioGroups.get(1).setVisibility(View.GONE);
         radioGroups.get(1).setOnCheckedChangeListener(new FadeOnCheckedListener());
 
-        iterate = findViewById(R.id.FirstQuestionnaireSecondContainerID);
+        iterate = findViewById(R.id.FifthQuestionnaireSecondContainerID);
         iterate.setOnClickListener(new AppearOnClickListener());
         containers.add(iterate);
 
-        radioGroups.add(findViewById(R.id.FirstQuestionnaireThirdItemRadioGroupID));
+        radioGroups.add(findViewById(R.id.FifthQuestionnaireThirdItemRadioGroupID));
         radioGroups.get(2).setVisibility(View.GONE);
         radioGroups.get(2).setOnCheckedChangeListener(new FadeOnCheckedListener());
 
-        iterate = findViewById(R.id.FirstQuestionnaireThirdContainerID);
+        iterate = findViewById(R.id.FifthQuestionnaireThirdContainerID);
         iterate.setOnClickListener(new AppearOnClickListener());
         containers.add(iterate);
 
-        radioGroups.add(findViewById(R.id.FirstQuestionnaireFourthItemRadioGroupID));
+        radioGroups.add(findViewById(R.id.FifthQuestionnaireFourthItemRadioGroupID));
         radioGroups.get(3).setVisibility(View.GONE);
         radioGroups.get(3).setOnCheckedChangeListener(new FadeOnCheckedListener());
 
-        iterate = findViewById(R.id.FirstQuestionnaireFourthContainerID);
+        iterate = findViewById(R.id.FifthQuestionnaireFourthContainerID);
         iterate.setOnClickListener(new AppearOnClickListener());
         containers.add(iterate);
 
-        radioGroups.add(findViewById(R.id.FirstQuestionnaireFifthItemRadioGroupID));
+        radioGroups.add(findViewById(R.id.FifthQuestionnaireFifthItemRadioGroupID));
         radioGroups.get(4).setVisibility(View.GONE);
         radioGroups.get(4).setOnCheckedChangeListener(new FadeOnCheckedListener());
 
-        iterate = findViewById(R.id.FirstQuestionnaireFifthContainerID);
+        iterate = findViewById(R.id.FifthQuestionnaireFifthContainerID);
         iterate.setOnClickListener(new AppearOnClickListener());
         containers.add(iterate);
 
-        radioGroups.add(findViewById(R.id.FirstQuestionnaireSixthItemRadioGroupID));
+        radioGroups.add(findViewById(R.id.FifthQuestionnaireSixthItemRadioGroupID));
         radioGroups.get(5).setVisibility(View.GONE);
         radioGroups.get(5).setOnCheckedChangeListener(new FadeOnCheckedListener());
 
-        iterate = findViewById(R.id.FirstQuestionnaireSixthContainerID);
+        iterate = findViewById(R.id.FifthQuestionnaireSixthContainerID);
         iterate.setOnClickListener(new AppearOnClickListener());
         containers.add(iterate);
 
-        radioGroups.add(findViewById(R.id.FirstQuestionnaireSeventhItemRadioGroupID));
+        radioGroups.add(findViewById(R.id.FifthQuestionnaireSeventhItemRadioGroupID));
         radioGroups.get(6).setVisibility(View.GONE);
         radioGroups.get(6).setOnCheckedChangeListener(new FadeOnCheckedListener());
 
-        iterate = findViewById(R.id.FirstQuestionnaireSeventhContainerID);
+        iterate = findViewById(R.id.FifthQuestionnaireSeventhContainerID);
         iterate.setOnClickListener(new AppearOnClickListener());
         containers.add(iterate);
 
-        radioGroups.add(findViewById(R.id.FirstQuestionnaireEighthItemRadioGroupID));
+        radioGroups.add(findViewById(R.id.FifthQuestionnaireEighthItemRadioGroupID));
         radioGroups.get(7).setVisibility(View.GONE);
         radioGroups.get(7).setOnCheckedChangeListener(new FadeOnCheckedListener());
 
-        iterate = findViewById(R.id.FirstQuestionnaireEighthContainerID);
+        iterate = findViewById(R.id.FifthQuestionnaireEighthContainerID);
         iterate.setOnClickListener(new AppearOnClickListener());
         containers.add(iterate);
 
-        radioGroups.add(findViewById(R.id.FirstQuestionnaireNinethItemRadioGroupID));
+        radioGroups.add(findViewById(R.id.FifthQuestionnaireNinethItemRadioGroupID));
         radioGroups.get(8).setVisibility(View.GONE);
         radioGroups.get(8).setOnCheckedChangeListener(new FadeOnCheckedListener());
 
-        iterate = findViewById(R.id.FirstQuestionnaireNinethContainerID);
+        iterate = findViewById(R.id.FifthQuestionnaireNinethContainerID);
         iterate.setOnClickListener(new AppearOnClickListener());
         containers.add(iterate);
 
-        radioGroups.add(findViewById(R.id.FirstQuestionnaireTenthItemRadioGroupID));
+        radioGroups.add(findViewById(R.id.FifthQuestionnaireTenthItemRadioGroupID));
         radioGroups.get(9).setVisibility(View.GONE);
         radioGroups.get(9).setOnCheckedChangeListener(new FadeOnCheckedListener());
 
-        iterate = findViewById(R.id.FirstQuestionnaireTenthContainerID);
+        iterate = findViewById(R.id.FifthQuestionnaireTenthContainerID);
         iterate.setOnClickListener(new AppearOnClickListener());
         containers.add(iterate);
 
-        Button next = findViewById(R.id.FirstQuestionnaireNextButtonID);
+        Button next = findViewById(R.id.FifthQuestionnaireNextButtonID);
         next.setOnClickListener(new NextPageOnClickListener());
 
     }
-
-    class NextPageOnClickListener implements View.OnClickListener {
+    class NextPageOnClickListener implements View.OnClickListener{
 
         @Override
         public void onClick(View view) {
+            if (answered < 10 ){
+                Toast.makeText(fifth_questionnaire_questions.this,"Please answer all questions before moving to next page.",Toast.LENGTH_SHORT).show();
+            }
+            else {
+                RequestQueue queue = Volley.newRequestQueue(context);
+                // Post params to be sent to the server
+                HashMap<String, ArrayList<HashMap<String,String>>> params = new HashMap<>();
+                params.put("payload", answerForm);
+
+                JsonObjectRequest req = new JsonObjectRequest(URL, new JSONObject(params),
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                System.out.println("Response158: " + response.toString());
+                                JSONObject jsonObject = null;
+                                try {
+                                    jsonObject = new JSONObject(String.valueOf(response));
 
 
-            System.out.println("BURADAYIM");
-            RequestQueue queue = Volley.newRequestQueue(context);
-            // Post params to be sent to the server
-            HashMap<String, ArrayList<String>> params = new HashMap<>();
-            params.put("payload", answers);
-
-            JsonObjectRequest req = new JsonObjectRequest(URL, new JSONObject(params),
-                    new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            System.out.println("Response158: " + response.toString());
-                            JSONObject jsonObject = null;
-                            try {
-                                jsonObject = new JSONObject(String.valueOf(response));
 
 
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+
                             }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error)
+                    {
+                        VolleyLog.e("Error: ", error.getMessage());
+                    }
+                }){
+
+                    //Headera gönder
+
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        HashMap<String, String> headers = new HashMap<String, String>();
+                        //headers.put("Content-Type", "application/json");
+                        headers.put("Authorization", tokenType + " " + token);
+                        return headers;
+                    }
+                };
+
+                // add the request object to the queue to be executed
+                queue.add(req);
+
+                Intent intent = new Intent(fifth_questionnaire_questions.this, HomeActivity.class);            Bundle extra = new Bundle();
+                extra.putSerializable("object",answerForm);
+                intent.putExtra("token", token);
+                intent.putExtra("tokenType", tokenType);
+                intent.putExtra("email", email);
+                intent.putExtra("password", password);
+                startActivity(intent);
 
 
-                        }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    VolleyLog.e("Error: ", error.getMessage());
-                }
-            }) {
-
-                //Headera gönder
-
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError {
-                    HashMap<String, String> headers = new HashMap<String, String>();
-                    //headers.put("Content-Type", "application/json");
-                    headers.put("Authorization", tokenType + " " + token);
-                    return headers;
-                }
-            };
-
-            // add the request object to the queue to be executed
-            queue.add(req);
-
-            Intent intent = new Intent(fifth_questionnaire_questions.this, HomeActivity.class);
-            Bundle extra = new Bundle();
-            extra.putSerializable("object", answers);
-            intent.putExtra("token", token);
-            intent.putExtra("tokenType", tokenType);
-            intent.putExtra("email", email);
-            intent.putExtra("password", password);
-            startActivity(intent);
-
+            }
 
         }
     }
-
-
     class FadeOnCheckedListener implements RadioGroup.OnCheckedChangeListener {
         @Override
         public void onCheckedChanged(RadioGroup radioGroup, int i) {
+            int currentLocation = 0;
             radioGroup.setVisibility(View.GONE);
-            for (int y = 0; y < radioGroups.size(); y++) {
-                if (y != radioGroups.size() - 1 && radioGroups.get(y).equals(radioGroup)) {
-                    radioGroups.get(y + 1).setVisibility(View.VISIBLE);
+            for (int y = 0; y < radioGroups.size(); y++){
+                currentLocation = y + 40;
+                if (radioGroups.get(y).equals(radioGroup)){
+                    if (answerForm.get(currentLocation).get("answer").equals("")){
+                        answered++;
+                    }
+                    switch (i%5){
+                        case 0:
+                            answerForm.get(currentLocation).put("answer","Completely Agree");
+                            break;
+                        case 1:
+                            answerForm.get(currentLocation).put("answer","Agree");
+                            break;
+                        case 2:
+                            answerForm.get(currentLocation).put("answer","Nor Agree Nor Disagree");
+                            break;
+                        case 3:
+                            answerForm.get(currentLocation).put("answer","Disagree");
+                            break;
+                        case 4:
+                            answerForm.get(currentLocation).put("answer","Completely Disagree");
+                            break;
+                    }
+                    if (y != radioGroups.size() -1){
+                        radioGroups.get(y+1).setVisibility(View.VISIBLE);
+                    }
                 }
             }
         }
     }
-
-    class AppearOnClickListener implements RelativeLayout.OnClickListener {
+    class AppearOnClickListener implements RelativeLayout.OnClickListener{
 
         @Override
         public void onClick(View view) {
             RelativeLayout layout = (RelativeLayout) view;
-            for (RadioGroup fade : radioGroups) {
+            for (RadioGroup fade : radioGroups){
                 fade.setVisibility(View.GONE);
             }
             RadioGroup toAppear = (RadioGroup) layout.getChildAt(1);
@@ -245,24 +326,28 @@ public class fifth_questionnaire_questions extends AppCompatActivity {
 
         }
     }
+
+
+    //database metotları
+
+
+
+
+
+
+    //misc
+
+
+
+
+
+
+
+
+
+
+
 }
-
-
-//database metotları
-
-
-
-
-
-
-//misc
-
-
-
-
-
-
-
 
 
 

@@ -10,16 +10,17 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 import com.example.Ucu_Birarada_Android.R;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class first_questionnaire_questions extends AppCompatActivity {
 
-    private ArrayList<String> answers;
+    private ArrayList<HashMap<String,String>> answerForm;
     private ArrayList<RadioGroup> radioGroups;
     private ArrayList<RelativeLayout> containers;
 
@@ -27,11 +28,12 @@ public class first_questionnaire_questions extends AppCompatActivity {
     private String tokenType;
     private String email;
     private String password;
+    private int answered;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-
+        answered = 0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_questionnaire_questions);
         this.init();
@@ -59,10 +61,57 @@ public class first_questionnaire_questions extends AppCompatActivity {
     //private metotlar
     private void init()
     {
-        this.answers = new ArrayList<>();
-        for (int i = 0; i < 50; i++){
-            answers.add("");
-        }
+        answerForm = new ArrayList<>();
+        HashMap<String,String> answer = new HashMap<>();
+        answer.put("questionBody","I am the life of the party.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I feel little concern for others.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I am always prepared.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I get stressed out easily.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I have a rich vocabulary.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I don't talk a lot.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I am interested in people.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I leave my belongings around.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I am relaxed most of the time.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
+        answer = new HashMap<>();
+        answer.put("questionBody","I have difficulty understanding abstract ideas.");
+        answer.put("answer","");
+        answerForm.add(answer);
+
         containers = new ArrayList<>();
         radioGroups = new ArrayList<RadioGroup>(25);
         radioGroups.add(findViewById(R.id.FirstQuestionnaireFirstItemRadioGroupID));
@@ -154,15 +203,20 @@ public class first_questionnaire_questions extends AppCompatActivity {
 
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(first_questionnaire_questions.this,second_questionnaire_questions.class);
-            Bundle extra = new Bundle();
-            intent.putExtra("token", token);
-            intent.putExtra("tokenType", tokenType);
-            intent.putExtra("email", email);
-            intent.putExtra("password", password);
-            extra.putSerializable("object",answers);
-            intent.putExtra("answers",extra);
-            startActivity(intent);
+            if (answered < 10 ){
+                Toast.makeText(first_questionnaire_questions.this,"Please answer all questions before moving to next page.",Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Intent intent = new Intent(first_questionnaire_questions.this,second_questionnaire_questions.class);
+                Bundle extra = new Bundle();
+                intent.putExtra("token", token);
+                intent.putExtra("tokenType", tokenType);
+                intent.putExtra("email", email);
+                intent.putExtra("password", password);
+                extra.putSerializable("object",answerForm);
+                intent.putExtra("answers",extra);
+                startActivity(intent);
+            }
         }
     }
     class FadeOnCheckedListener implements RadioGroup.OnCheckedChangeListener {
@@ -171,21 +225,24 @@ public class first_questionnaire_questions extends AppCompatActivity {
             radioGroup.setVisibility(View.GONE);
             for (int y = 0; y < radioGroups.size(); y++){
                 if (radioGroups.get(y).equals(radioGroup)){
+                    if (answerForm.get(y).get("answer").equals("")){
+                        answered++;
+                    }
                     switch (i%5){
                         case 0:
-                            answers.set(y,"Completely Agree");
+                            answerForm.get(y).put("answer","Completely Agree");
                             break;
                         case 1:
-                            answers.set(y,"Agree");
+                            answerForm.get(y).put("answer","Agree");
                             break;
                         case 2:
-                            answers.set(y,"Nor Agree Nor Disagree");
+                            answerForm.get(y).put("answer","Nor Agree Nor Disagree");
                             break;
                         case 3:
-                            answers.set(y,"Disagree");
+                            answerForm.get(y).put("answer","Disagree");
                             break;
                         case 4:
-                            answers.set(y,"Completely Disagree");
+                            answerForm.get(y).put("answer","Completely Disagree");
                             break;
                     }
                     if (y != radioGroups.size() -1){

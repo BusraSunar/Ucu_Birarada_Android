@@ -32,11 +32,20 @@ import com.example.Ucu_Birarada_Android.MeditationActivities.MeditationActivity;
 import com.example.Ucu_Birarada_Android.ProfileActivity;
 import com.example.Ucu_Birarada_Android.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,15 +54,20 @@ public class SleepActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_RECORD_AUDIO = 1;
     private SoundMeter soundMeter;
     private BottomNavigationView bottomNavigationView;
-    //private LineChart chart;
     private TextView dateView, timeView;
+    private TextView slept, wokeUp, sleepQuality, totalSleep, bestSleepAt, worstSleepAt;
+    private String sleptData, wokeUpData, bestSleepAtData, worstSleepAtData;
+    private Double sleepQualityData;
+    private int totalSleepHoursData;
+
+
 
     private String token;
     private String tokenType;
     private String email;
     private String password;
 
-    private final static String URL = "http://10.2.37.108:8080/sleep/mobile";
+    private final static String URL = "http://10.2.36.114:8080/sleep/mobile";
 
 
     @Override
@@ -63,10 +77,12 @@ public class SleepActivity extends AppCompatActivity {
         this.checkInternet();
 
         this.init();
-        //this.initGrap();
 
         System.out.println("Önemli Token::::" + token + "  " + tokenType);
         this.getData();
+
+
+
     }
 
 
@@ -124,11 +140,10 @@ public class SleepActivity extends AppCompatActivity {
 
     //Private Actions
     private void init() {
-       // chart = (LineChart) findViewById(R.id.SleepActivityChartID); // Önemsiz dese bile bu activityde viewları cast et.
         bottomNavigationView = findViewById(R.id.bottomNav);// <--  Bu hariç
         bottomNavigationView.setSelectedItemId(R.id.sleep);
-        dateView = (TextView) findViewById(R.id.SleepActivityDateTextID);;
-        timeView = (TextView) findViewById(R.id.SleepActivityTimeTextID);;
+        dateView = (TextView) findViewById(R.id.SleepActivityDateTextID);
+        timeView = (TextView) findViewById(R.id.SleepActivityTimeTextID);
         bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavMethod);
         Intent intent = getIntent();
         tokenType = intent.getStringExtra("tokenType");
@@ -136,86 +151,18 @@ public class SleepActivity extends AppCompatActivity {
         email = intent.getStringExtra("email");
         password = intent.getStringExtra("password");
 
+        slept = (TextView) findViewById(R.id.slept);
+        wokeUp = (TextView) findViewById(R.id.wokeUp);
+        sleepQuality = (TextView) findViewById(R.id.sleepQuality);
+        totalSleep = (TextView) findViewById(R.id.totalSleep);
+        bestSleepAt = (TextView) findViewById(R.id.bestSleepAt);
+        worstSleepAt = (TextView) findViewById(R.id.worstSleepAt);
     }
-/*
-    private void initGrap() {
 
-        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-        List<String> xAxisValues = new ArrayList<>(Arrays.asList("PZT", "SAL", "ÇAR", "PER", "CUM", "CMT","PAZ"));
-        List<Entry> incomeEntries = getIncomeEntries();
-        dataSets = new ArrayList<>();
-        LineDataSet set1;
-
-        set1 = new LineDataSet(incomeEntries, "Uyku Kalitesi");
-        set1.setColor(ContextCompat.getColor(SleepActivity.this,R.color.green));
-        dataSets.add(set1);
-
-        //customization
-
-        chart.setExtraBottomOffset(1);
-        chart.fitScreen();
-        chart.setScaleEnabled(false);
-        chart.setTouchEnabled(false);
-        chart.setDragEnabled(false);
-        chart.setPinchZoom(false);
-        chart.setPinchZoom(false);
-        chart.setDoubleTapToZoomEnabled(false);
-        chart.setDrawGridBackground(false);
-
-        //to hide background lines
-        chart.getXAxis().setDrawGridLines(false);
-        chart.getAxisLeft().setDrawGridLines(false);
-        chart.getAxisRight().setDrawGridLines(false);
-
-        //to hide right Y and top X border
-        YAxis rightYAxis = chart.getAxisRight();
-        rightYAxis.setEnabled(false);
-
-
-        XAxis xAxis = chart.getXAxis();
-        xAxis.setAxisMinimum(0);
-        xAxis.setGranularity(1f);
-        xAxis.setEnabled(true);
-        xAxis.setDrawGridLines(false);
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setLabelRotationAngle(360-45);
-
-        set1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
-        set1.setDrawFilled(true);
-        set1.setFillColor(ContextCompat.getColor(SleepActivity.this,R.color.green));
-        set1.setLineWidth(2f);
-        set1.setCircleRadius(3f);
-        set1.setCircleColor(-7829368);
-        set1.setCircleHoleColor(-7829368);
-        set1.setDrawValues(false);
-
-        chart.setViewPortOffsets(0f, 0f, 0f, 0f);
-
-        //String setter in x-Axis
-        chart.getXAxis().setValueFormatter(new com.github.mikephil.charting.formatter.IndexAxisValueFormatter(xAxisValues));
-        LineData data = new LineData(dataSets);
-        chart.setData(data);
-        chart.invalidate();
-        chart.getLegend().setEnabled(false);
-        chart.getDescription().setEnabled(false);
-
-    }
 
     //Get Data
-    private List<Entry> getIncomeEntries() {
-        ArrayList<Entry> incomeEntries = new ArrayList<>();
 
-        incomeEntries.add(new Entry(0, 8));
-        incomeEntries.add(new Entry(1, 11));
-        incomeEntries.add(new Entry(2, 13));
-        incomeEntries.add(new Entry(3, 7));
-        incomeEntries.add(new Entry(4, 9));
-        incomeEntries.add(new Entry(5, 10));
-        incomeEntries.add(new Entry(6, 6));
-        return incomeEntries.subList(0, 7);
-    }
 
-*/
     //DB Actions
 
     //Button Actions
@@ -343,17 +290,28 @@ public class SleepActivity extends AppCompatActivity {
                             for (int i = 0; i < jsonArray.length(); i++)
                             {
                                 JSONObject jo = jsonArray.getJSONObject(i);
+                                sleptData = (String) jo.get("sleepStartTime");
+                                wokeUpData = (String) jo.get("sleepEndTime");
+                                bestSleepAtData = (String) jo.get("bestSleepAt");
+                                worstSleepAtData = (String) jo.get("worstSleepAt");
+                                sleepQualityData = (Double) jo.get("averageSleepQuality");
+                                totalSleepHoursData = (int) jo.get("totalSleepHours");
 
-                                System.out.println("SLEEP GET: " + jo.toString());
+
+                                slept.setText(sleptData.substring(11,16).replace(":" , " : "));
+                                wokeUp.setText(wokeUpData.substring(11,16).replace(":" , " : "));
+                                bestSleepAt.setText(bestSleepAtData.substring(11,16).replace(":" , " : "));
+                                worstSleepAt.setText(worstSleepAtData.substring(11,16).replace(":" , " : "));
+                                sleepQuality.setText(new DecimalFormat("##.#").format(sleepQualityData));
+                                totalSleep.setText(""+totalSleepHoursData);
+
+                                System.out.println("SLEEP GET  ------->    " + jo.toString());
+
 
                             }
-
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
-
                     }
                 }, new Response.ErrorListener() {
             @Override
