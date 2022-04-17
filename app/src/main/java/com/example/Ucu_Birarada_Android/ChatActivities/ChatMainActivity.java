@@ -525,7 +525,7 @@ public class ChatMainActivity extends AppCompatActivity {
 
         TextView message = new TextView(this);
         // You Can Customise your Title here
-        message.setText("Konuşmayı sonlandırmak istiyor musunuz ?");
+        message.setText("Do you want to leave the chat ?");
         message.setTextColor(getColor(R.color.dark_green));
         message.setTextSize(15);
         builder1.setCustomTitle(message);

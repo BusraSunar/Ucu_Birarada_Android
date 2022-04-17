@@ -196,4 +196,13 @@ public class MeditationActivity extends AppCompatActivity {
     }
 
 
+    public void goToWill(View view) {
+        Intent intent = new Intent(MeditationActivity.this, WillActivity.class);
+        intent.putExtra("token", token);
+        intent.putExtra("tokenType", tokenType);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
+        startActivity(intent);
+        finish();
+    }
 }
