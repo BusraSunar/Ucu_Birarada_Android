@@ -68,7 +68,7 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
+        this.checkInternet();
         bottomNavigationView = findViewById(R.id.bottomNav);
         bottomNavigationView.setSelectedItemId(R.id.profile);
 
@@ -286,8 +286,6 @@ public class ProfileActivity extends AppCompatActivity {
             femaleButton.setChecked(true);
         } else if(genderText.getText().equals("MALE")){
             maleButton.setChecked(true);
-        } else{
-            otherButton.setChecked(true);
         }
         initDatePicker();
     }
@@ -435,6 +433,16 @@ public class ProfileActivity extends AppCompatActivity {
         intentt.putExtra("password", password);
         startActivity(intentt);
     }
+    public void goToHome(View view) {
+        Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
+        intent.putExtra("token", token);
+        intent.putExtra("tokenType", tokenType);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
+        startActivity(intent);
+        finish();
+    }
+
 
 }
 
