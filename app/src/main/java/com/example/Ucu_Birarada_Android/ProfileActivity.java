@@ -8,6 +8,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -33,6 +34,9 @@ import com.example.Ucu_Birarada_Android.SleepActivity.SleepActivity;
 import com.example.Ucu_Birarada_Android.toDoAndAchivements.AchivementActivity;
 import com.example.Ucu_Birarada_Android.toDoAndAchivements.ToDoActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.text.ParseException;
@@ -441,6 +445,21 @@ public class ProfileActivity extends AppCompatActivity {
         intent.putExtra("tokenType", tokenType);
         intent.putExtra("email", email);
         intent.putExtra("password", password);
+        startActivity(intent);
+        finish();
+    }
+
+    public void logout(View view)
+    {
+        System.out.println("Email: " + email);
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("checkbox", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.clear();
+        editor.apply();
+        FirebaseFirestore.getInstance().collection("User").document(email)
+                .update("isOnline", "0");
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(ProfileActivity.this , LoginActivity.class);
         startActivity(intent);
         finish();
     }
