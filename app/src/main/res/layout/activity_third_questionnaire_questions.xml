@@ -653,14 +653,21 @@
                 </RadioGroup>
             </RelativeLayout>
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/ThirdQuestionnaireNextButtonID"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
+                android:id="@+id/FifthQuestionnaireNextButtonID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
                 android:layout_below="@id/ThirdQuestionnaireTenthContainerID"
                 android:layout_centerHorizontal="true"
+                android:layout_alignParentRight="true"
                 android:backgroundTint="@color/green"
+                android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+                android:drawableTint="@color/white"
+                app:iconSize="10dp"
                 android:text="Next"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:padding="10dp"
+                android:textSize="16sp"/>
         </RelativeLayout>
 
     </ScrollView>

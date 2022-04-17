@@ -5,16 +5,16 @@
     <item
         android:drawable="@drawable/logo_1"
         android:duration="500"
-        android:fromAlpha="0"
-        android:toAlpha="1"/>
+        android:fromAlpha="0.1"
+        android:toAlpha="1.0"/>
     <item
         android:drawable="@drawable/logo_2"
         android:duration="500"
-        android:fromAlpha="0"
-        android:toAlpha="1"/>
+        android:fromAlpha="0.1"
+        android:toAlpha="1.0"/>
     <item
         android:drawable="@drawable/logo_3"
         android:duration="500"
-        android:fromAlpha="0"
-        android:toAlpha="1"/>
+        android:fromAlpha="0.1"
+        android:toAlpha="1.0"/>
 </animation-list>

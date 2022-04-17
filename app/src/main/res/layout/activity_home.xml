@@ -70,6 +70,7 @@
                 app:cardMaxElevation="12dp"
                 app:cardPreventCornerOverlap="true">
 
+
                 <ImageView
                     android:layout_width="170dp"
                     android:layout_height="170dp"
