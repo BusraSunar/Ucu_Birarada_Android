@@ -26,6 +26,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.db.williamchart.data.DataPoint;
+import com.db.williamchart.view.LineChartView;
 import com.example.Ucu_Birarada_Android.ChatActivities.ChatActivity;
 import com.example.Ucu_Birarada_Android.HomeActivity;
 import com.example.Ucu_Birarada_Android.MeditationActivities.MeditationActivity;
@@ -47,16 +49,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SleepActivity extends AppCompatActivity {
 
     private static final int MY_PERMISSIONS_RECORD_AUDIO = 1;
-    private SoundMeter soundMeter;
     private BottomNavigationView bottomNavigationView;
     private TextView dateView, timeView;
     private TextView slept, wokeUp, sleepQuality, totalSleep, bestSleepAt, worstSleepAt;
     private String sleptData, wokeUpData, bestSleepAtData, worstSleepAtData;
+    private List <Date> sleepTimeList;
+    private List <Double> sleepQualityList;
+    private LineChartView lineChart;
     private Double sleepQualityData;
     private int totalSleepHoursData;
 
@@ -67,7 +72,7 @@ public class SleepActivity extends AppCompatActivity {
     private String email;
     private String password;
 
-    private final static String URL = "http://10.2.36.114:8080/sleep/mobile";
+    private final static String URL = "http://10.2.36.80:8080/sleep/mobile";
 
 
     @Override
@@ -157,8 +162,17 @@ public class SleepActivity extends AppCompatActivity {
         totalSleep = (TextView) findViewById(R.id.totalSleep);
         bestSleepAt = (TextView) findViewById(R.id.bestSleepAt);
         worstSleepAt = (TextView) findViewById(R.id.worstSleepAt);
+
+        lineChart = findViewById(R.id.lineChart);
+        drawLineChart();
+
     }
 
+    private void drawLineChart(){
+        List<DataPoint> data = new ArrayList<>();
+
+        //lineChart.drawLine();
+    }
 
     //Get Data
 
@@ -296,6 +310,9 @@ public class SleepActivity extends AppCompatActivity {
                                 worstSleepAtData = (String) jo.get("worstSleepAt");
                                 sleepQualityData = (Double) jo.get("averageSleepQuality");
                                 totalSleepHoursData = (int) jo.get("totalSleepHours");
+                                //sleepTimeList = (List<Date>) jo.get("sleepTimeList");
+                                //sleepQualityList = (List<Double>) jo.get("sleepQualityList");
+
 
 
                                 slept.setText(sleptData.substring(11,16).replace(":" , " : "));

@@ -238,7 +238,7 @@ public class RegisterActivity extends AppCompatActivity{
         String surname = lastnameText.getText().toString();
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
-        final String URL = "http://10.2.36.131:8080/user/signup";
+        final String URL = "http://10.2.36.80:8080/user/signup";
         int genid=radioGroup.getCheckedRadioButtonId();
         RadioButton radioButton = (RadioButton) findViewById(genid);
         String gender=radioButton.getText().toString();

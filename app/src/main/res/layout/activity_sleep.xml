@@ -396,7 +396,7 @@
 
 
                 <com.db.williamchart.view.LineChartView
-                    android:id="@+id/SleepActivityChartID"
+                    android:id="@+id/lineChart"
                     android:layout_width="400dp"
                     android:layout_height="200dp"
                     android:layout_below="@id/days"
@@ -406,9 +406,8 @@
                     app:chart_labelsSize="10sp"
                     app:chart_lineColor="@color/green"
                     app:chart_lineThickness="1dp"
-                    app:chart_pointDrawable="drawable"
                     app:chart_smoothLine="true"
-
+                    android:clickable="false"
                     />
 
 
@@ -416,7 +415,7 @@
                     android:id="@+id/line"
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
-                    android:layout_below="@id/SleepActivityChartID"
+                    android:layout_below="@id/lineChart"
                     android:layout_marginHorizontal="10dp"
                     android:background="@android:color/darker_gray" />
 
