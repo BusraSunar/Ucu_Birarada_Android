@@ -11,8 +11,11 @@
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_chat_main.xml" value="0.12360688956433637" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_chat_match.xml" value="0.12360688956433637" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_deneme.xml" value="0.17300724637681159" />
+        <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_fifth_questionnaire_questions.xml" value="0.2006340579710145" />
+        <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_first_questionnaire_questions.xml" value="0.2006340579710145" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_forest.xml" value="0.17300724637681159" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_forgot_password.xml" value="0.1598731884057971" />
+        <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_fourth_questionnaire_questions.xml" value="0.2006340579710145" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_home.xml" value="0.1598731884057971" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_login.xml" value="0.1598731884057971" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
@@ -20,9 +23,11 @@
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_profile.xml" value="0.264" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_redirect.xml" value="0.2006340579710145" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_register.xml" value="0.19384057971014493" />
+        <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_second_questionnaire_questions.xml" value="0.2006340579710145" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_sleep.xml" value="0.19384057971014493" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_snow.xml" value="0.17300724637681159" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_splash.xml" value="0.17300724637681159" />
+        <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_third_questionnaire_questions.xml" value="0.2006340579710145" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_to_do.xml" value="0.2006340579710145" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/item_container_recieved_message.xml" value="0.12360688956433637" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/item_container_sent_message.xml" value="0.12360688956433637" />
