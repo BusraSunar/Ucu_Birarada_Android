@@ -41,7 +41,7 @@
         <entry key="app/src/main/res/layout/activity_redirect.xml" value="0.1301715438950555" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.13723511604439959" />
         <entry key="app/src/main/res/layout/activity_second_questionnaire_questions.xml" value="0.13723511604439959" />
-        <entry key="app/src/main/res/layout/activity_sleep.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_sleep.xml" value="0.28140869140624997" />
         <entry key="app/src/main/res/layout/activity_sleep_counter.xml" value="0.13723511604439959" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.13723511604439959" />
         <entry key="app/src/main/res/layout/activity_third_questionnaire_questions.xml" value="0.13723511604439959" />
@@ -50,7 +50,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
