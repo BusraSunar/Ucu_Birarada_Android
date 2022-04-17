@@ -30,9 +30,12 @@ import com.android.volley.toolbox.Volley;
 import com.example.Ucu_Birarada_Android.ChatActivities.ChatActivity;
 import com.example.Ucu_Birarada_Android.HomeActivity;
 import com.example.Ucu_Birarada_Android.MeditationActivities.MeditationActivity;
+import com.example.Ucu_Birarada_Android.Models.DaysOfWeekModel;
 import com.example.Ucu_Birarada_Android.ProfileActivity;
 import com.example.Ucu_Birarada_Android.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,7 +43,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -57,6 +59,11 @@ public class SleepActivity extends AppCompatActivity {
 
     private ArrayList<String> qualityList;
     private ArrayList<String> timeList;
+
+    private ArrayList<DaysOfWeekModel> days = new ArrayList<>(7);
+
+    private CircularProgressIndicator sunday , monday, tuesday, wednesday, thursday, friday, saturday;
+
 
 
 
@@ -80,8 +87,6 @@ public class SleepActivity extends AppCompatActivity {
 
         System.out.println("Önemli Token::::" + token + "  " + tokenType);
         this.getData();
-
-
 
     }
 
@@ -162,20 +167,22 @@ public class SleepActivity extends AppCompatActivity {
         qualityList = new ArrayList<>();
         timeList = new ArrayList<>();
 
+        sunday = findViewById(R.id.SundayProgressID);
+        monday = findViewById(R.id.MondayProgressID);
+        tuesday = findViewById(R.id.TuesdayProgressID);
+        wednesday = findViewById(R.id.WednesdayProgressID);
+        thursday = findViewById(R.id.ThursdayProgressID);
+        friday = findViewById(R.id.FridayProgressID);
+        saturday = findViewById(R.id.SaturdayProgressID);
+
         drawLineChart();
 
     }
 
-    private void drawLineChart(){
+    private void drawLineChart()
+    {
 
     }
-
-    //Get Data
-
-
-    //DB Actions
-
-    //Button Actions
 
     public void startSleepButtonAction(View view) {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
@@ -259,6 +266,8 @@ public class SleepActivity extends AppCompatActivity {
                     Intent intent = new Intent(SleepActivity.this , SleepCounterActivity.class);
                     intent.putExtra("token", token);
                     intent.putExtra("tokenType", tokenType);
+                    intent.putExtra("email", email);
+                    intent.putExtra("password", password);
                     startActivity(intent);
                     finish();
                 } else {
@@ -281,7 +290,6 @@ public class SleepActivity extends AppCompatActivity {
     }
 
 
-    //Devam edilecek
     private void getData(){
         RequestQueue queue = Volley.newRequestQueue(this);
         // Post params to be sent to the server
@@ -316,11 +324,11 @@ public class SleepActivity extends AppCompatActivity {
 
                                 for (int j = 0; j < time.length(); j++){
                                     timeList.add(time.getString(j));
-                                    System.out.println("Time List -- " + j + "  ---> " + timeList.get(j));
+                                    //System.out.println("Time List -- " + j + "  ---> " + timeList.get(j));
                                 }
                                 for (int j = 0; j < quality.length(); j++){
                                     qualityList.add(quality.getString(j));
-                                    System.out.println("Quality List -- " + j + "  ---> " + qualityList.get(j));
+                                    //System.out.println("Quality List -- " + j + "  ---> " + qualityList.get(j));
                                 }
 
 
@@ -332,7 +340,9 @@ public class SleepActivity extends AppCompatActivity {
                                 sleepQuality.setText(new DecimalFormat("##.#").format(temp));
                                 totalSleep.setText(totalSleepHoursData);
 
-                                System.out.println("SLEEP GET  ------->    " + jo.toString());
+                                monday.setProgress((int) (temp * 100));
+
+
 
 
                             }
