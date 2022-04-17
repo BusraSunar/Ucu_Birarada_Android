@@ -1,4 +1,4 @@
-package com.example.Ucu_Birarada_Android;
+package com.example.Ucu_Birarada_Android.MeditationActivities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,8 +8,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.Ucu_Birarada_Android.R;
 import com.google.vr.sdk.widgets.video.VrVideoEventListener;
 import com.google.vr.sdk.widgets.video.VrVideoView;
 

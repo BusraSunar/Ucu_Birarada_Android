@@ -44,9 +44,9 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.9'
     implementation 'com.mikhaellopez:circularimageview:4.3.0'
     // Charts
-    implementation 'com.diogobernardino:williamchart:3.10.1'
+    implementation 'com.diogobernardino:williamchart:3.11.0'
 
     // Tooltips
-    implementation 'com.diogobernardino.williamchart:tooltip-slider:3.10.1'
-    implementation 'com.diogobernardino.williamchart:tooltip-points:3.10.1'
+    implementation 'com.diogobernardino.williamchart:tooltip-slider:3.11.0'
+    implementation 'com.diogobernardino.williamchart:tooltip-points:3.11.0'
 }

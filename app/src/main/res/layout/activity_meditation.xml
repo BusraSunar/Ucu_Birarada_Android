@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/general_background"
     android:clipChildren="false"
-    tools:context=".MeditationActivity">
+    tools:context=".MeditationActivities.MeditationActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -112,7 +112,7 @@
                     android:layout_height="150dp"
                     android:layout_gravity="start"
                     android:layout_marginLeft="5dp"
-                    android:src="@drawable/winter" />
+                    android:src="@drawable/snow" />
 
                 <TextView
                     android:layout_width="wrap_content"

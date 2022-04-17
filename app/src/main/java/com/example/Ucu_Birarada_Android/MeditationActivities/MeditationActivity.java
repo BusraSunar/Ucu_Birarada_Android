@@ -1,4 +1,4 @@
-package com.example.Ucu_Birarada_Android;
+package com.example.Ucu_Birarada_Android.MeditationActivities;
 
 
 
@@ -17,6 +17,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.Ucu_Birarada_Android.ChatActivities.ChatActivity;
+import com.example.Ucu_Birarada_Android.HomeActivity;
+import com.example.Ucu_Birarada_Android.ProfileActivity;
+import com.example.Ucu_Birarada_Android.R;
 import com.example.Ucu_Birarada_Android.SleepActivity.SleepActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

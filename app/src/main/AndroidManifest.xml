@@ -46,7 +46,7 @@
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".MeditationActivity"
+            android:name=".MeditationActivities.MeditationActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
@@ -73,13 +73,13 @@
             android:name=".ChatActivities.ChatActivity"
             android:exported="false" />
         <activity
-            android:name=".ForestActivity"
+            android:name=".MeditationActivities.ForestActivity"
             android:exported="true" />
         <activity
-            android:name=".BeachActivity"
+            android:name=".MeditationActivities.BeachActivity"
             android:exported="true" />
         <activity
-            android:name=".SnowActivity"
+            android:name=".MeditationActivities.SnowActivity"
             android:exported="true" />
         <activity
             android:name=".SplashActivity"

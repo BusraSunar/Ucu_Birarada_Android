@@ -6,12 +6,16 @@
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/drawable/logo_anim.xml" value="0.162" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/drawable/splash_anim.xml" value="0.162" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_beach.xml" value="0.17300724637681159" />
+        <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_chat.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_chat_main.xml" value="0.12360688956433637" />
+        <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_chat_match.xml" value="0.12360688956433637" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_deneme.xml" value="0.17300724637681159" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_forest.xml" value="0.17300724637681159" />
+        <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_forgot_password.xml" value="0.1598731884057971" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_home.xml" value="0.1598731884057971" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_login.xml" value="0.1598731884057971" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
-        <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_meditation.xml" value="0.4742468415937804" />
+        <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_meditation.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_snow.xml" value="0.17300724637681159" />
         <entry key="..\:/AndroidStudioProjects/Ucu_Birarada_Android/app/src/main/res/layout/activity_splash.xml" value="0.17300724637681159" />
       </map>

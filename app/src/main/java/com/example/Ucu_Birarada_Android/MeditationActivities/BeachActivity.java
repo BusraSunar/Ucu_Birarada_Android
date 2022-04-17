@@ -1,36 +1,32 @@
-package com.example.Ucu_Birarada_Android;
+package com.example.Ucu_Birarada_Android.MeditationActivities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatImageView;
-
+import com.example.Ucu_Birarada_Android.R;
 import com.google.vr.sdk.widgets.video.VrVideoEventListener;
 import com.google.vr.sdk.widgets.video.VrVideoView;
 
 import java.io.IOException;
 
-public class SnowActivity extends Activity {
+public class BeachActivity extends Activity {
 
     private Uri fileUri;
     private VrVideoView.Options videoOptions = new VrVideoView.Options();
     protected VrVideoView videoWidgetView;
-    ImageButton imageButton;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_snow);
+        setContentView(R.layout.activity_beach);
 
         //statusText = (TextView) findViewById(R.id.status_text);
-        imageButton = (ImageButton) findViewById(R.id.backToMeditationSnow);
+
         videoWidgetView = (VrVideoView) findViewById(R.id.video_view);
         videoWidgetView.setEventListener(new VrVideoEventListener(){
             @Override
@@ -38,7 +34,7 @@ public class SnowActivity extends Activity {
                 VrVideoView.Options options = new VrVideoView.Options();
                 options.inputType = VrVideoView.Options.TYPE_MONO;
                 try {
-                    videoWidgetView.loadVideoFromAsset("snow2.mp4", options);
+                    videoWidgetView.loadVideoFromAsset("beach.mp4", options);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -65,7 +61,7 @@ public class SnowActivity extends Activity {
 
             VrVideoView.Options options = new VrVideoView.Options();
             options.inputType = VrVideoView.Options.TYPE_MONO;
-            videoWidgetView.loadVideoFromAsset("snow2.mp4", options);
+            videoWidgetView.loadVideoFromAsset("beach.mp4", options);
 
         } catch (IOException e) {
 
@@ -73,7 +69,7 @@ public class SnowActivity extends Activity {
                 @Override
                 public void run() {
                     Toast
-                            .makeText(SnowActivity.this, "Error opening file. ", Toast.LENGTH_LONG)
+                            .makeText(BeachActivity.this, "Error opening file. ", Toast.LENGTH_LONG)
                             .show();
                 }
             });
@@ -108,8 +104,7 @@ public class SnowActivity extends Activity {
     @Override
     protected void onDestroy() {
         // Destroy the widget and free memory.
-        videoWidgetView.pauseVideo();
-
+        videoWidgetView.shutdown();
         super.onDestroy();
     }
 
@@ -126,7 +121,7 @@ public class SnowActivity extends Activity {
     public void goBackToMeditation(View view) {
         onPause();
         onDestroy();
-        Intent intent = new Intent(SnowActivity.this, MeditationActivity.class);
+        Intent intent = new Intent(BeachActivity.this, MeditationActivity.class);
         startActivity(intent);
         finish();
     }
