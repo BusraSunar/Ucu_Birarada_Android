@@ -4,19 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/todoandrowshape"
-        android:orientation="horizontal">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/todoandrowshape">
 
         <ImageView
             android:id="@+id/AchievementICONID"
-            android:layout_width="55dp"
+            android:layout_width="30dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:layout_height="55dp"/>
+            android:layout_centerVertical="true"
+            android:layout_height="30dp"/>
 
         <TextView
             android:layout_marginLeft="-10dp"
@@ -24,8 +24,11 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginTop="5dp"
+            android:gravity="center|start"
             android:paddingTop="10dp"
+            android:layout_toRightOf="@id/AchievementICONID"
             android:paddingEnd="10dp"
+            android:paddingStart="5dp"
             android:textStyle="bold"
             android:paddingBottom="12dp"
             android:layout_marginStart="10dp"
@@ -34,7 +37,7 @@
 
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 

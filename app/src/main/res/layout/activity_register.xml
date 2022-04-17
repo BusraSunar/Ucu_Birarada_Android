@@ -128,7 +128,6 @@
                         android:drawableTint="@color/green"
                         android:hint="Password"
                         android:inputType="textPassword"
-                        android:text="123456789"
                         android:maxLines="1"
                         android:padding="5dp"
                         android:textColor="@color/green"
