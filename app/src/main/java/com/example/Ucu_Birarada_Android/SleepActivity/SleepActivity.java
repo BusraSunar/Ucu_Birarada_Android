@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -30,9 +31,12 @@ import com.android.volley.toolbox.Volley;
 import com.example.Ucu_Birarada_Android.ChatActivities.ChatActivity;
 import com.example.Ucu_Birarada_Android.HomeActivity;
 import com.example.Ucu_Birarada_Android.MeditationActivities.MeditationActivity;
+import com.example.Ucu_Birarada_Android.Models.DaysOfWeekModel;
 import com.example.Ucu_Birarada_Android.ProfileActivity;
 import com.example.Ucu_Birarada_Android.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,9 +44,18 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import lecho.lib.hellocharts.gesture.ZoomType;
+import lecho.lib.hellocharts.model.Axis;
+import lecho.lib.hellocharts.model.AxisValue;
+import lecho.lib.hellocharts.model.Line;
+import lecho.lib.hellocharts.model.LineChartData;
+import lecho.lib.hellocharts.model.PointValue;
+import lecho.lib.hellocharts.model.ValueShape;
+import lecho.lib.hellocharts.model.Viewport;
+import lecho.lib.hellocharts.view.LineChartView;
 
 public class SleepActivity extends AppCompatActivity {
 
@@ -54,9 +67,16 @@ public class SleepActivity extends AppCompatActivity {
     private List <Date> sleepTimeList;
     private List <Double> sleepQualityList;
     private String sleepQualityData, totalSleepHoursData, timeListStr, qualityListStr, todaysDate;
+    private LineChartView lineChart;
+    public static Context context;
 
     private ArrayList<String> qualityList;
     private ArrayList<String> timeList;
+
+    private ArrayList<DaysOfWeekModel> days = new ArrayList<>(7);
+
+    private CircularProgressIndicator sunday , monday, tuesday, wednesday, thursday, friday, saturday;
+
 
 
 
@@ -75,6 +95,7 @@ public class SleepActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sleep);
         this.checkInternet();
+        context = getApplicationContext();
 
         this.init();
 
@@ -158,24 +179,75 @@ public class SleepActivity extends AppCompatActivity {
         bestSleepAt = (TextView) findViewById(R.id.bestSleepAt);
         worstSleepAt = (TextView) findViewById(R.id.worstSleepAt);
 
-
         qualityList = new ArrayList<>();
         timeList = new ArrayList<>();
 
-        drawLineChart();
+        sunday = findViewById(R.id.SundayProgressID);
+        monday = findViewById(R.id.MondayProgressID);
+        tuesday = findViewById(R.id.TuesdayProgressID);
+        wednesday = findViewById(R.id.WednesdayProgressID);
+        thursday = findViewById(R.id.ThursdayProgressID);
+        friday = findViewById(R.id.FridayProgressID);
+        saturday = findViewById(R.id.SaturdayProgressID);
 
     }
 
     private void drawLineChart(){
+        /*ChartData.setAxisXBottom(Axis axisX);
+        ColumnChartData.setStacked(boolean isStacked);
+        Line.setStrokeWidth(int strokeWidthDp);*/
+
+        List<PointValue> values = new ArrayList();
+
+        for(int i = 0 ; i < qualityList.size() ; i++){
+            values.add(new PointValue(i, Float.parseFloat(qualityList.get(i))));
+        }
+
+        //In most cased you can call data model methods in builder-pattern-like manner.
+        Line line = new Line(values);
+
+        line.setCubic(true);
+        line.setFilled(true);
+        line.setHasLabels(false);
+        line.setHasLabelsOnlyForSelected(false);
+        line.setHasLines(true);
+        line.setHasPoints(true);
+        line.setPointRadius(3);
+
+        line.setColor(Color.LTGRAY);
+        line.setStrokeWidth(2);
+
+        //line.setAreaTransparency(3);
+        line.setFilled(true);
+        List<Line> lines = new ArrayList<Line>();
+        lines.add(line);
+
+        Axis axisX = new Axis();
+        Axis axisY = new Axis();
+
+        LineChartData data = new LineChartData();
+        data.setLines(lines);
+
+        data.setAxisXBottom(axisX);
+        data.setAxisYLeft(axisY);
+
+        lineChart = findViewById(R.id.lineChart);
+        lineChart.setLineChartData(data);
+        lineChart.setScrollBarSize(20);
+        //data.setBaseValue(Float.NEGATIVE_INFINITY);
+        lineChart.setZoomEnabled(false);
+
+        final Viewport v = new Viewport(lineChart.getMaximumViewport());
+        v.bottom = 0;
+        v.top = 11;
+        // You have to set max and current viewports separately.
+        lineChart.setMaximumViewport(v);
+        // I changing current viewport with animation in this case.
+        lineChart.setCurrentViewportWithAnimation(v);
+
+
 
     }
-
-    //Get Data
-
-
-    //DB Actions
-
-    //Button Actions
 
     public void startSleepButtonAction(View view) {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
@@ -259,6 +331,8 @@ public class SleepActivity extends AppCompatActivity {
                     Intent intent = new Intent(SleepActivity.this , SleepCounterActivity.class);
                     intent.putExtra("token", token);
                     intent.putExtra("tokenType", tokenType);
+                    intent.putExtra("email", email);
+                    intent.putExtra("password", password);
                     startActivity(intent);
                     finish();
                 } else {
@@ -281,7 +355,6 @@ public class SleepActivity extends AppCompatActivity {
     }
 
 
-    //Devam edilecek
     private void getData(){
         RequestQueue queue = Volley.newRequestQueue(this);
         // Post params to be sent to the server
@@ -332,7 +405,9 @@ public class SleepActivity extends AppCompatActivity {
                                 sleepQuality.setText(new DecimalFormat("##.#").format(temp));
                                 totalSleep.setText(totalSleepHoursData);
 
-                                System.out.println("SLEEP GET  ------->    " + jo.toString());
+                                monday.setProgress((int) (temp * 100));
+                                drawLineChart();
+
 
 
                             }
