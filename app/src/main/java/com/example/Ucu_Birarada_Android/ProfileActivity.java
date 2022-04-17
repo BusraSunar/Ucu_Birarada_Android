@@ -286,8 +286,6 @@ public class ProfileActivity extends AppCompatActivity {
             femaleButton.setChecked(true);
         } else if(genderText.getText().equals("MALE")){
             maleButton.setChecked(true);
-        } else{
-            otherButton.setChecked(true);
         }
         initDatePicker();
     }
