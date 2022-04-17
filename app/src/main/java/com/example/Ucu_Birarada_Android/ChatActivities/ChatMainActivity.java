@@ -293,7 +293,7 @@ public class ChatMainActivity extends AppCompatActivity {
                                 builder1.setCancelable(false);
 
                                 builder1.setNeutralButton(
-                                        "Home Ekranına Git",
+                                        "Go To Home",
                                         new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int id) {
                                                 dialog.cancel();
@@ -450,7 +450,7 @@ public class ChatMainActivity extends AppCompatActivity {
 
 
         builder1.setPositiveButton(
-                "Evet",
+                "Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
@@ -514,7 +514,7 @@ public class ChatMainActivity extends AppCompatActivity {
 
 
         builder1.setNegativeButton(
-                "Hayır",
+                "No",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
@@ -546,7 +546,7 @@ public class ChatMainActivity extends AppCompatActivity {
         EditText editText = new EditText(ChatMainActivity.this);
         editText.setInputType(InputType.TYPE_CLASS_TEXT);
         dialog.setView(editText);
-        dialog.setPositiveButton("Gönder", new DialogInterface.OnClickListener(){
+        dialog.setPositiveButton("Send", new DialogInterface.OnClickListener(){
 
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -556,7 +556,7 @@ public class ChatMainActivity extends AppCompatActivity {
 
             }
         });
-        dialog.setNegativeButton("İptal", new DialogInterface.OnClickListener(){
+        dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.cancel();
@@ -564,7 +564,7 @@ public class ChatMainActivity extends AppCompatActivity {
         });
 
         TextView title = new TextView(this);
-        title.setText("Sohbet arkadaşını bildir?");
+        title.setText("Report your chat buddy?");
         title.setTextColor(getColor(R.color.dark_green));
         title.setTextSize(20);
         dialog.setCustomTitle(title);

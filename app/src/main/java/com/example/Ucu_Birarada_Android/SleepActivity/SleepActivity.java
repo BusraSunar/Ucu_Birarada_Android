@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -34,20 +35,10 @@ import com.example.Ucu_Birarada_Android.MeditationActivities.MeditationActivity;
 import com.example.Ucu_Birarada_Android.ProfileActivity;
 import com.example.Ucu_Birarada_Android.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.text.DecimalFormat;
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -319,7 +310,8 @@ public class SleepActivity extends AppCompatActivity {
                                 wokeUp.setText(wokeUpData.substring(11,16).replace(":" , " : "));
                                 bestSleepAt.setText(bestSleepAtData.substring(11,16).replace(":" , " : "));
                                 worstSleepAt.setText(worstSleepAtData.substring(11,16).replace(":" , " : "));
-                                sleepQuality.setText(new DecimalFormat("##.#").format(sleepQualityData));
+                                double temp = Double.parseDouble(sleepQualityData);
+                                sleepQuality.setText(new DecimalFormat("##.#").format(temp));
                                 totalSleep.setText(""+totalSleepHoursData);
 
                                 System.out.println("SLEEP GET  ------->    " + jo.toString());
@@ -347,8 +339,21 @@ public class SleepActivity extends AppCompatActivity {
                 return headers;
             }
         };
-
+        req.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(req);
+    }
+
+    public void goToHome(View view) {
+        Intent intent = new Intent(SleepActivity.this, HomeActivity.class);
+        intent.putExtra("token", token);
+        intent.putExtra("tokenType", tokenType);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
+        startActivity(intent);
+        finish();
     }
 
 }

@@ -69,6 +69,8 @@ public class ChatActivity extends AppCompatActivity {
         Intent intent = new Intent(ChatActivity.this , HomeActivity.class);
         intent.putExtra("token", token);
         intent.putExtra("tokenType", tokenType);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
         startActivity(intent);
         finish();
     }
@@ -119,6 +121,8 @@ public class ChatActivity extends AppCompatActivity {
         Intent intent = new Intent(ChatActivity.this , ChatMatchActivity.class);
         intent.putExtra("token", token);
         intent.putExtra("tokenType", tokenType);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
         startActivity(intent);
         finish();
     }
@@ -127,6 +131,8 @@ public class ChatActivity extends AppCompatActivity {
         Intent intent = new Intent(ChatActivity.this , HomeActivity.class);
         intent.putExtra("token", token);
         intent.putExtra("tokenType", tokenType);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
         startActivity(intent);
         finish();
     }

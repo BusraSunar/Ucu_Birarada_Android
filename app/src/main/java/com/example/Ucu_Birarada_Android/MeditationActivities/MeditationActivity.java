@@ -28,6 +28,8 @@ public class MeditationActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private String token;
     private String tokenType;
+    private String email;
+    private String password;
 
     private CardView forestCardView;
     private CardView beachCardView;
@@ -49,6 +51,8 @@ public class MeditationActivity extends AppCompatActivity {
         Intent intent = new Intent(MeditationActivity.this , HomeActivity.class);
         intent.putExtra("token", token);
         intent.putExtra("tokenType", tokenType);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
         startActivity(intent);
         finish();
     }
@@ -67,6 +71,8 @@ public class MeditationActivity extends AppCompatActivity {
         Intent intent = getIntent();
         tokenType = intent.getStringExtra("tokenType");
         token = intent.getStringExtra("token");
+        email = intent.getStringExtra("email");
+        password = intent.getStringExtra("password");
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -106,6 +112,8 @@ public class MeditationActivity extends AppCompatActivity {
                     intent = new Intent(MeditationActivity.this , SleepActivity.class);
                     intent.putExtra("token", token);
                     intent.putExtra("tokenType", tokenType);
+                    intent.putExtra("email", email);
+                    intent.putExtra("password", password);
                     startActivity(intent);
                     overridePendingTransition(0,0);
                     break;
@@ -113,6 +121,8 @@ public class MeditationActivity extends AppCompatActivity {
                     intent = new Intent(MeditationActivity.this , MeditationActivity.class);
                     intent.putExtra("token", token);
                     intent.putExtra("tokenType", tokenType);
+                    intent.putExtra("email", email);
+                    intent.putExtra("password", password);
                     startActivity(intent);
                     overridePendingTransition(0,0);
                     break;
@@ -120,6 +130,8 @@ public class MeditationActivity extends AppCompatActivity {
                     intent = new Intent(MeditationActivity.this , ChatActivity.class);
                     intent.putExtra("token", token);
                     intent.putExtra("tokenType", tokenType);
+                    intent.putExtra("email", email);
+                    intent.putExtra("password", password);
                     startActivity(intent);
                     overridePendingTransition(0,0);
                     break;
@@ -127,6 +139,8 @@ public class MeditationActivity extends AppCompatActivity {
                     intent = new Intent(MeditationActivity.this , ProfileActivity.class);
                     intent.putExtra("token", token);
                     intent.putExtra("tokenType", tokenType);
+                    intent.putExtra("email", email);
+                    intent.putExtra("password", password);
                     startActivity(intent);
                     overridePendingTransition(0,0);
                     break;
@@ -139,18 +153,40 @@ public class MeditationActivity extends AppCompatActivity {
     public void goToForestScene(View view) {
 
         Intent intent = new Intent(MeditationActivity.this, ForestActivity.class);
+        intent.putExtra("token", token);
+        intent.putExtra("tokenType", tokenType);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
         startActivity(intent);
         finish();
     }
 
     public void goToBeachScene(View view) {
         Intent intent = new Intent(MeditationActivity.this, BeachActivity.class);
+        intent.putExtra("token", token);
+        intent.putExtra("tokenType", tokenType);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
         startActivity(intent);
         finish();
     }
 
     public void goToSnowScene(View view) {
         Intent intent = new Intent(MeditationActivity.this, SnowActivity.class);
+        intent.putExtra("token", token);
+        intent.putExtra("tokenType", tokenType);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
+        startActivity(intent);
+        finish();
+    }
+
+    public void goToHome(View view) {
+        Intent intent = new Intent(MeditationActivity.this, HomeActivity.class);
+        intent.putExtra("token", token);
+        intent.putExtra("tokenType", tokenType);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
         startActivity(intent);
         finish();
     }

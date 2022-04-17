@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListAdapter;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -25,10 +27,12 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.Ucu_Birarada_Android.Adapters.ToDoListAdapter;
+import com.example.Ucu_Birarada_Android.ChatActivities.ChatMainActivity;
 import com.example.Ucu_Birarada_Android.CustomListView.SwipeListViewTouchListener;
 import com.example.Ucu_Birarada_Android.Models.ToDoModel;
 import com.example.Ucu_Birarada_Android.ProfileActivity;
 import com.example.Ucu_Birarada_Android.R;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -175,45 +179,55 @@ public class ToDoActivity extends AppCompatActivity{
         //this.getUserData();
         this.getUserData();
 
-
-
-
-
-
-
-
-
-
     }
 
     public void addTask(View view)
     {
-        final EditText taskEditText = new EditText(this);
-        AlertDialog dialog = new AlertDialog.Builder(this)
-                .setTitle("Yeni Hedef Ekleyiniz")
-                .setView(taskEditText)
-                .setPositiveButton("Add", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        String newTask = String.valueOf(taskEditText.getText());
-                        tasks.add(new ToDoModel(newTask , false));
-                        saveUserData(new ToDoModel(newTask , false));
-                        if (tasks.isEmpty())
-                        {
-                            todoemptyText.setVisibility(View.VISIBLE);
-                            todoListView.setVisibility(View.INVISIBLE);
-                        }
-                        else
-                        {
-                            todoemptyText.setVisibility(View.INVISIBLE);
-                            todoListView.setVisibility(View.VISIBLE);
-                        }
-                        adapterTask.notifyDataSetChanged();
-                    }
-                })
-                .setNegativeButton("Cancel", null)
-                .create();
-        dialog.show();
+
+        MaterialAlertDialogBuilder dialog = new MaterialAlertDialogBuilder(ToDoActivity.this);
+        dialog.setBackground(getResources().getDrawable(R.drawable.alert_dialog_bg,null));
+        EditText editText = new EditText(ToDoActivity.this);
+        editText.setInputType(InputType.TYPE_CLASS_TEXT);
+        dialog.setView(editText);
+        dialog.setPositiveButton("Add", new DialogInterface.OnClickListener(){
+
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String newTask = String.valueOf(editText.getText());
+                tasks.add(new ToDoModel(newTask , false));
+                saveUserData(new ToDoModel(newTask , false));
+                if (tasks.isEmpty())
+                {
+                    todoemptyText.setVisibility(View.VISIBLE);
+                    todoListView.setVisibility(View.INVISIBLE);
+                }
+                else
+                {
+                    todoemptyText.setVisibility(View.INVISIBLE);
+                    todoListView.setVisibility(View.VISIBLE);
+                }
+                adapterTask.notifyDataSetChanged();
+
+            }
+        });
+        dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        TextView title = new TextView(this);
+        title.setText("Add a New Task");
+        title.setTextColor(getColor(R.color.dark_green));
+        title.setTextSize(20);
+        dialog.setCustomTitle(title);
+        AlertDialog alert11 = dialog.create();
+        alert11.show();
+
+        alert11.getButton(alert11.BUTTON_NEGATIVE).setTextColor(getColor(R.color.dark_green));
+        alert11.getButton(alert11.BUTTON_POSITIVE).setTextColor(getColor(R.color.brown4));
+
 
     }
 
@@ -299,7 +313,10 @@ public class ToDoActivity extends AppCompatActivity{
                 return headers;
             }
         };
-
+        req.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(req);
     }
 
@@ -354,6 +371,10 @@ public class ToDoActivity extends AppCompatActivity{
         };
 
         // add the request object to the queue to be executed
+        req.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(req);
 
     }
@@ -409,6 +430,10 @@ public class ToDoActivity extends AppCompatActivity{
         };
 
         // add the request object to the queue to be executed
+        req.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(req);
 
     }

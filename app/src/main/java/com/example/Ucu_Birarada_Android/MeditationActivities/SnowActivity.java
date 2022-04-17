@@ -19,7 +19,11 @@ public class SnowActivity extends Activity {
     private Uri fileUri;
     private VrVideoView.Options videoOptions = new VrVideoView.Options();
     protected VrVideoView videoWidgetView;
-    ImageButton imageButton;
+    private ImageButton imageButton;
+    private String token;
+    private String tokenType;
+    private String email;
+    private String password;
 
 
     @Override
@@ -27,6 +31,11 @@ public class SnowActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_snow);
 
+        Intent intent = getIntent();
+        tokenType = intent.getStringExtra("tokenType");
+        token = intent.getStringExtra("token");
+        email = intent.getStringExtra("email");
+        password = intent.getStringExtra("password");
         //statusText = (TextView) findViewById(R.id.status_text);
         imageButton = (ImageButton) findViewById(R.id.backToMeditationSnow);
         videoWidgetView = (VrVideoView) findViewById(R.id.video_view);
@@ -125,7 +134,24 @@ public class SnowActivity extends Activity {
         onPause();
         onDestroy();
         Intent intent = new Intent(SnowActivity.this, MeditationActivity.class);
+        intent.putExtra("token", token);
+        intent.putExtra("tokenType", tokenType);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
         startActivity(intent);
         finish();
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(SnowActivity.this , MeditationActivity.class);
+        intent.putExtra("token", token);
+        intent.putExtra("tokenType", tokenType);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
+        startActivity(intent);
+        finish();
+    }
+
 }

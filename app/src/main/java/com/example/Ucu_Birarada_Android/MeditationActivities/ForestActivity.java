@@ -20,13 +20,22 @@ public class ForestActivity extends Activity {
     private Uri fileUri;
     private VrVideoView.Options videoOptions = new VrVideoView.Options();
     protected VrVideoView videoWidgetView;
-    ImageButton imageButton;
+    private ImageButton imageButton;
+    private String token;
+    private String tokenType;
+    private String email;
+    private String password;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forest);
 
+        Intent intent = getIntent();
+        tokenType = intent.getStringExtra("tokenType");
+        token = intent.getStringExtra("token");
+        email = intent.getStringExtra("email");
+        password = intent.getStringExtra("password");
         //statusText = (TextView) findViewById(R.id.status_text);
         imageButton = (ImageButton) findViewById(R.id.backToMeditationImage);
 
@@ -126,7 +135,24 @@ public class ForestActivity extends Activity {
         onPause();
         onDestroy();
         Intent intent = new Intent(ForestActivity.this, MeditationActivity.class);
+        intent.putExtra("token", token);
+        intent.putExtra("tokenType", tokenType);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
         startActivity(intent);
         finish();
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(ForestActivity.this , MeditationActivity.class);
+        intent.putExtra("token", token);
+        intent.putExtra("tokenType", tokenType);
+        intent.putExtra("email", email);
+        intent.putExtra("password", password);
+        startActivity(intent);
+        finish();
+    }
+
 }
