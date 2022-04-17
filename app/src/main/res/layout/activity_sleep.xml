@@ -618,19 +618,24 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <com.google.android.material.button.MaterialButton
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/stopButton"
-                    android:layout_width="200dp"
-                    android:layout_height="70dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/informationGrid"
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="15dp"
-                    android:backgroundTint="@color/green"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="50dp"
                     android:onClick="startSleepButtonAction"
-                    android:text="START SLEEP"
-                    android:textColor="@color/white" />
+                    android:scaleType="center"
+                    android:src="@drawable/ic_baseline_arrow_24"
+                    app:backgroundTint="@color/green"
+                    app:fabCustomSize="75dp"
+                    app:maxImageSize="60dp"
+                    app:tint="@android:color/white" />
+
+
             </RelativeLayout>
         </ScrollView>
 
