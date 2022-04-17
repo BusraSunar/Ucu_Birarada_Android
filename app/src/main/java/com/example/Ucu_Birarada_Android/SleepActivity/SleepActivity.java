@@ -27,8 +27,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.db.williamchart.data.DataPoint;
-import com.db.williamchart.view.LineChartView;
 import com.example.Ucu_Birarada_Android.ChatActivities.ChatActivity;
 import com.example.Ucu_Birarada_Android.HomeActivity;
 import com.example.Ucu_Birarada_Android.MeditationActivities.MeditationActivity;
