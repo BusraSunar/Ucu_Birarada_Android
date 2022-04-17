@@ -342,7 +342,7 @@ public class ChatMainActivity extends AppCompatActivity {
 
                                 TextView message = new TextView(ChatMainActivity.this);
                                 // You Can Customise your Title here
-                                message.setText("Sohbet Arkadaşınız Konuşmayı sonlandırdı.");
+                                message.setText("Your chat buddy has left the chat.");
                                 message.setTextColor(getColor(R.color.dark_green));
                                 message.setTextSize(15);
                                 builder1.setCustomTitle(message);
