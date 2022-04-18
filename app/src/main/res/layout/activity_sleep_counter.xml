@@ -36,9 +36,9 @@
             android:onClick="stopButtonAction"
             android:scaleType="center"
             android:src="@drawable/ic_baseline_pause_24"
-            app:backgroundTint="@color/bordo"
-            app:fabCustomSize="75dp"
-            app:maxImageSize="60dp"
+            app:backgroundTint="@color/purple"
+            app:fabCustomSize="95dp"
+            app:maxImageSize="70dp"
             app:tint="@android:color/white" />
 
 
