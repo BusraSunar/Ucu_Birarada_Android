@@ -8,6 +8,21 @@
     android:clipChildren="false"
     tools:context=".MeditationActivities.MeditationActivity">
 
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="15dp"
+        android:translationZ="90dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="25dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/gift"
+        android:onClick="goToWill"
+        android:clickable="true"
+         />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -99,6 +114,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="30dp"
+                android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:onClick="goToSnowScene"
                 app:cardBackgroundColor="@color/gray"
@@ -126,6 +142,8 @@
 
 
             </androidx.cardview.widget.CardView>
+
+
 
         </RelativeLayout>
     </ScrollView>
