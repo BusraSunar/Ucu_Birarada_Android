@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="350dp"
+            android:layout_marginTop="320dp"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="50dp"
@@ -31,7 +31,7 @@
             android:layout_below="@+id/counter"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             android:layout_marginBottom="50dp"
             android:onClick="stopButtonAction"
             android:scaleType="center"
@@ -40,8 +40,6 @@
             app:fabCustomSize="95dp"
             app:maxImageSize="70dp"
             app:tint="@android:color/white" />
-
-
 
 
     </RelativeLayout>
