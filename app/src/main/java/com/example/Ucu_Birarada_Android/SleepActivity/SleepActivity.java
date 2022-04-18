@@ -41,6 +41,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -62,7 +64,7 @@ public class SleepActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_RECORD_AUDIO = 1;
     private BottomNavigationView bottomNavigationView;
     private TextView dateView, timeView;
-    private TextView slept, wokeUp, sleepQuality, totalSleep, bestSleepAt, worstSleepAt;
+    private TextView slept, wokeUp, sleepQuality, totalSleep, bestSleepAt, worstSleepAt, sleepActivityDay, sleepActivityDate;;
     private String sleptData, wokeUpData, bestSleepAtData, worstSleepAtData;
     private List <Date> sleepTimeList;
     private List <Double> sleepQualityList;
@@ -87,7 +89,7 @@ public class SleepActivity extends AppCompatActivity {
     private String email;
     private String password;
 
-    private final static String URL = "http://10.2.37.71:8080/sleep/mobile";
+    private final static String URL = "http://192.168.1.47:8080/sleep/mobile";
 
 
     @Override
@@ -189,6 +191,17 @@ public class SleepActivity extends AppCompatActivity {
         thursday = findViewById(R.id.ThursdayProgressID);
         friday = findViewById(R.id.FridayProgressID);
         saturday = findViewById(R.id.SaturdayProgressID);
+
+        sleepActivityDay = (TextView) findViewById(R.id.SleepActivityDateTextID);
+        sleepActivityDate = (TextView) findViewById(R.id.SleepActivityTimeTextID);
+
+        LocalDate currentdate = LocalDate.now();
+        sleepActivityDay.setText(currentdate.getDayOfWeek().name());
+        int currentDay = currentdate.getDayOfMonth();
+        Month currentMonth = currentdate.getMonth();
+        sleepActivityDate.setText(currentDay + " " + currentMonth);
+
+
 
     }
 
