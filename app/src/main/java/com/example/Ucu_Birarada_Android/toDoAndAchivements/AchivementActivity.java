@@ -48,7 +48,7 @@ public class AchivementActivity extends AppCompatActivity {
     private ListView achievementListView;
     private AchievementAdapter achievementAdapter;
     public static Context context;
-    private final String URL = "http://10.2.36.80:8080/achievement";
+    private final String URL = "http://10.2.37.71:8080/achievement";
     private String email;
     private String password;
 

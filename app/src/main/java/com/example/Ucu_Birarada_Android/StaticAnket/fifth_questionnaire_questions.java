@@ -44,7 +44,7 @@ public class fifth_questionnaire_questions extends AppCompatActivity {
     private String tokenType;
     private String email;
     private String password;
-    private final String URL = "http://10.2.36.80:8080/question/submitAnswers";
+    private final String URL = "http://10.2.37.71:8080/question/submitAnswers";
     public static Context context;
     private int answered;
 

@@ -41,7 +41,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        final String URL = "http://10.2.36.80:8080/user/forgotPass?email=" + str_email;
+        final String URL = "http://10.2.37.71:8080/user/forgotPass?email=" + str_email;
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("email", str_email);
 
