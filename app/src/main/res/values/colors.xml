@@ -22,4 +22,5 @@
     <color name="dark_green">#2E5700</color>
     <color name="dark_green_chat">#244500</color>
     <color name="dark_green_chat_received">#1B3400</color>
+    <color name="purple">#B0B1D9</color>
 </resources>
