@@ -22,7 +22,12 @@ import com.example.Ucu_Birarada_Android.LoginActivity;
 import com.example.Ucu_Birarada_Android.ProfileActivity;
 import com.example.Ucu_Birarada_Android.R;
 import com.example.Ucu_Birarada_Android.SleepActivity.SleepActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class MeditationActivity extends AppCompatActivity {
 
@@ -129,11 +134,31 @@ public class MeditationActivity extends AppCompatActivity {
                     break;
                 case R.id.chat:
                     intent = new Intent(MeditationActivity.this , ChatActivity.class);
-                    intent.putExtra("token", token);
-                    intent.putExtra("tokenType", tokenType);
-                    intent.putExtra("email", email);
-                    intent.putExtra("password", password);
-                    startActivity(intent);
+                    Intent finalIntent = intent;
+                    FirebaseFirestore.getInstance().collection("User")
+                            .whereEqualTo("isOnline", "1")
+                            .get()
+                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(Task<QuerySnapshot> task) {
+                                    if (task.isSuccessful()) {
+                                        int counter = 0;
+                                        for (QueryDocumentSnapshot document : task.getResult()) {
+                                            counter++;
+
+                                        }
+
+                                        finalIntent.putExtra("onlineNumber",""+counter);
+                                        finalIntent.putExtra("token", token);
+                                        finalIntent.putExtra("tokenType", tokenType);
+                                        finalIntent.putExtra("email", email);
+                                        finalIntent.putExtra("password", password);
+
+                                        startActivity(finalIntent);
+                                        finish();
+                                    }
+                                }
+                            });
                     overridePendingTransition(0,0);
                     break;
                 case R.id.profile:
